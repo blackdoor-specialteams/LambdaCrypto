@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation -->
+<html lang="en" dir="ltr" class="client-js ve-not-available"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Block cipher mode of operation - Wikipedia, the free encyclopedia</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta name="generator" content="MediaWiki 1.23wmf20">
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Block_cipher_mode_of_operation">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit">
+<link rel="edit" title="Edit this page" href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit">
+<link rel="apple-touch-icon" href="http://bits.wikimedia.org/apple-touch/wikipedia.png">
+<link rel="shortcut icon" href="http://bits.wikimedia.org/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://en.wikipedia.org/w/opensearch_desc.php" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://en.wikipedia.org/w/api.php?action=rsd">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&feed=atom">
+<link rel="canonical" href="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/Block cipher mode of operation - Wikipedia, the free encyclopedia.htm">
+<link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&lang=en&modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cteahouse%7Cext.rtlcite%2Cwikihiero%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.ui.button%7Cskins.common.interface%7Cskins.vector.styles&only=styles&skin=vector&*">
+<style>
+@-webkit-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-webkit-transform:translateY(-20px)}100%{opacity:1;-webkit-transform:translateY(0)}}@-moz-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-moz-transform:translateY(-20px)}100%{opacity:1;-moz-transform:translateY(0)}}@-o-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-o-transform:translateY(-20px)}100%{opacity:1;-o-transform:translateY(0)}}@keyframes centralAuthPPersonalAnimation{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}.centralAuthPPersonalAnimation{-webkit-animation-duration:1s;-moz-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-name:centralAuthPPersonalAnimation;-moz-animation-name:centralAuthPPersonalAnimation;-o-animation-name:centralAuthPPersonalAnimation;animation-name:centralAuthPPersonalAnimation}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:0dcacc990dd02e7db9669ab3090b80f1 */
+.mw-editsection{white-space:nowrap;padding-right:0.25em; unicode-bidi:-moz-isolate;unicode-bidi:-webkit-isolate;unicode-bidi:isolate}.mw-editsection-divider{color:#555} .mw-content-ltr .mw-editsection-expanded .mw-editsection-bracket:first-of-type,.mw-content-rtl .mw-editsection-expanded .mw-editsection-bracket:not(:first-of-type){margin-left:-0.25em;margin-right:0.25em;color:#555} .mw-content-rtl .mw-editsection-expanded .mw-editsection-bracket:first-of-type,.mw-content-ltr .mw-editsection-expanded .mw-editsection-bracket:not(:first-of-type){margin-right:-0.25em;margin-left:0.25em;color:#555}.ve-tabmessage-appendix{font-size:0.7em;vertical-align:top;line-height:1.43em;padding-left:0.5em; background-image:none !important;display:inline !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:10d5f32d441941e72673fc73cdfe14a9 */
+.uls-menu a{cursor:pointer}.uls-menu.callout .caret-before{border-top:20px solid transparent;border-right:20px solid #C9C9C9;border-bottom:20px solid transparent;display:inline-block;left:-21px;top:30px;position:absolute}.uls-menu.callout .caret-after{border-top:20px solid transparent;border-right:20px solid #FCFCFC;border-bottom:20px solid transparent;display:inline-block;left:-20px;top:30px;position:absolute}.uls-ui-languages button{width:23%;text-overflow:ellipsis;margin-right:4%}button.uls-more-languages{width:auto}.settings-title{font-size:11pt}.settings-text{color:#555555;font-size:9pt}div.display-settings-block:hover .settings-text{color:#252525}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:22d1681fa868b4ff4fbcb1ec1e58a9ea */
+.tipsy{padding:5px;position:absolute;z-index:100000;cursor:default}.tipsy-inner{padding:5px 8px 4px 8px; background-color:#ffffff;border:solid 1px #a7d7f9;color:black;max-width:15em;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px; }.tipsy-arrow{position:absolute;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALAgMAAADUwp+1AAAACVBMVEX5+fmn1/n///9s6BFKAAAAAXRSTlMAQObYZgAAACpJREFUCB1jZBD4wMiQMoeRcUU4I9uSaYxSE54xZjn8AtMgPkgcJA9UBwAeDw1Qrb3pVAAAAABJRU5ErkJggg==) no-repeat top left;background:url(//bits.wikimedia.org/static-1.23wmf20/resources/jquery.tipsy/images/tipsy.png?2014-03-27T16:43:20Z) no-repeat top left!ie;width:11px;height:6px} .tipsy-n .tipsy-arrow{top:0px;left:50%;margin-left:-5px} .tipsy-nw .tipsy-arrow{top:1px;left:10px} .tipsy-ne .tipsy-arrow{top:1px;right:10px} .tipsy-s .tipsy-arrow{bottom:0px;left:50%;margin-left:-5px;background-position:bottom left} .tipsy-sw .tipsy-arrow{bottom:0px;left:10px;background-position:bottom left} .tipsy-se .tipsy-arrow{bottom:0px;right:10px;background-position:bottom left} .tipsy-e .tipsy-arrow{top:50%;margin-top:-5px;right:1px;width:5px;height:11px;background-position:top right} .tipsy-w .tipsy-arrow{top:50%;margin-top:-5px;left:0px;width:6px;height:11px}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:abbe7fb1179238c85880a681895b0551 */
+.wbc-editpage{list-style:none none;text-align:right;padding-right:.5em !important}.wbc-editpage > a{padding-left:11px;background:no-repeat left center}.wbc-editpage > a:link,.wbc-editpage > a:visited{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAAD1BMVEUZAAD///95eXmqqqrY2NjEIQ0cAAAAAXRSTlMAQObYZgAAACdJREFUCNdjYGBgYGIAASUFENNJCUiqmADZTM5OqExFFZAKRSG4YgBjcwODynSgDwAAAABJRU5ErkJggg==);background-image:url(//bits.wikimedia.org/static-1.23wmf20/extensions/Wikidata/extensions/Wikibase/client/resources/images/WBC-Asset-Pencil.png?2014-03-27T16:48:20Z)!ie;color:#797979 !important}.wbc-editpage > a:hover{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAAD1BMVEWBAADY2Nj///8GRa0zZrtW2AECAAAAAXRSTlMAQObYZgAAACdJREFUCNdjYGBgYGYAAWMDEFPYGEgaOgLZzCLCqEwjQ5AKI2W4YgBg5QOTQPzBuAAAAABJRU5ErkJggg==);background-image:url(//bits.wikimedia.org/static-1.23wmf20/extensions/Wikidata/extensions/Wikibase/client/resources/images/WBC-Asset-Pencil-Hover.png?2014-03-27T16:48:20Z)!ie;color:#0645AD !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:2e0ec3b347fa9dd1f6cd5e05ce95735d */
+@media print{#centralNotice{display:none}}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ddb0c98a055632ae8e349c9cf48ac703 */
+.cite-accessibility-label{position:absolute !important; top:-99999px;clip:rect(1px 1px 1px 1px); clip:rect(1px,1px,1px,1px);padding:0 !important;border:0 !important;height:1px !important;width:1px !important;overflow:hidden}.mw-cite-backlink,.cite-accessibility-label{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:a59b70abe6ecaa39388bb79ebc509cb0 */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(//bits.wikimedia.org/static-1.23wmf20/resources/mediawiki.action/images/green-checkmark.png?2014-03-27T16:43:20Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:f557e4de54f145329b5ffd5aab58b078 */
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none} caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:6c1d24e90626cec584f0869483f983e7 */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.wp-teahouse-question-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}#wp-th-question-ask{float:right}.wp-teahouse-ask a.external{background-image:none !important}.wp-teahouse-respond-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}.wp-th-respond{float:right}.wp-teahouse-respond a.external{background-image:none !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ba4e3603af357b5172e85672664d39a8 */
+.referencetooltip{position:absolute;list-style:none;list-style-image:none;opacity:0;font-size:10px;margin:0;z-index:5;padding:0}.referencetooltip li{border:#080086 2px solid;max-width:260px;padding:10px 8px 13px 8px;margin:0px;background-color:#F7F7F7;box-shadow:2px 4px 2px rgba(0,0,0,0.3);-moz-box-shadow:2px 4px 2px rgba(0,0,0,0.3);-webkit-box-shadow:2px 4px 2px rgba(0,0,0,0.3)}.referencetooltip li+li{margin-left:7px;margin-top:-2px;border:0;padding:0;height:3px;width:0px;background-color:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border-top:12px #080086 solid;border-right:7px transparent solid;border-left:7px transparent solid}.referencetooltip>li+li::after{content:'';border-top:8px #F7F7F7 solid;border-right:5px transparent solid;border-left:5px transparent solid;margin-top:-12px;margin-left:-5px;z-index:1;height:0px;width:0px;display:block}.client-js body .referencetooltip li li{border:none;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;height:auto;width:auto;margin:auto;padding:0;position:static}.RTflipped{padding-top:13px}.referencetooltip.RTflipped li+li{position:absolute;top:2px;border-top:0;border-bottom:12px #080086 solid}.referencetooltip.RTflipped li+li::after{border-top:0;border-bottom:8px #F7F7F7 solid;position:absolute;margin-top:7px}.RTsettings{float:right;height:16px;width:16px;cursor:pointer;background-image:url(//upload.wikimedia.org/wikipedia/commons/e/ed/Cog.png);margin-top:-9px;margin-right:-7px;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-o-transition:opacity 0.15s;-ms-transition:opacity 0.15s;transition:opacity 0.15s;opacity:0.6;filter:alpha(opacity=60)}.RTsettings:hover{opacity:1;filter:alpha(opacity=100)}.RTTarget{border:#080086 2px solid}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3c614aa75cecefe56b27b5e3c9197b7e */
+#container{position:relative;min-height:100%}#container,video{width:100%;height:100%}#playerContainer{overflow:hidden;position:relative;height:100%;background:#000}#videoHolder{position:relative;overflow:hidden}.fullscreen #playerContainer{position:absolute !important;width:100% !important;height:100%! important;z-index:9999;min-height:100%;top:0;left:0;margin:0}.mwEmbedPlayer{width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0}.modal_editor{ left:10px;top:10px;right:10px;bottom:10px;position:fixed;z-index:100}.displayHTML a:visited{color:white}.loadingSpinner{width:32px;height:32px;display:block;padding:0px;background-image:url(//bits.wikimedia.org/static-1.23wmf20/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/loading_ani.gif?2014-03-27T16:46:40Z)}.mw-imported-resource{border:thin solid black}.kaltura-icon{background-image:url(//bits.wikimedia.org/static-1.23wmf20/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/kaltura_logo_sm_transparent.png?2014-03-27T16:46:40Z) !important;background-repeat:no-repeat;display:block;height:12px;width:12px;margin-top:2px !important;margin-left:3px !important}.mw-fullscreen-overlay{background:rgb(0,0,0) none repeat scroll 0% 0%;position:fixed;top:0pt;left:0pt;width:100%;height:100%;-moz-background-clip:border;-moz-background-origin:padding;-moz-background-inline-policy:continuous} .play-btn-large{width:70px;height:53px;background :url(//bits.wikimedia.org/static-1.23wmf20/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/player_big_play_button.png?2014-03-27T16:46:40Z);position :absolute;cursor :pointer;border :none !important;z-index :1}.play-btn-large:hover{background :url(//bits.wikimedia.org/static-1.23wmf20/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/player_big_play_button_hover.png?2014-03-27T16:46:40Z)}.carouselContainer{position :absolute;width :100%;z-index :2}.carouselVideoTitle{position :absolute;top :0px;left :0px;width :100%;background :rgba(0,0,0,0.8);color :white;font-size :small;font-weight :bold;z-index :2}.carouselVideoTitleText{display :block;padding :10px 10px 10px 20px}.carouselTitleDuration{position :absolute;top :0px;right :0px;padding :2px;background-color :#5A5A5A;color :#D9D9D9;font-size :smaller;z-index :2}.carouselImgTitle{position :absolute;width :100%;text-align :center;color :white;font-size :small;background :rgba(0,0,0,0.4)}.carouselImgDuration{position :absolute;top :2px;left :2px;background :rgba( 0,0,0,0.7 );color :white;padding :1px 6px;font-size :small}.carouselPrevButton,.carouselNextButton{display :block;position :absolute;bottom:23px}.carouselPrevButton{left :5px}.carouselNextButton{right:6px}.alert-container{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-image:linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-o-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-moz-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-webkit-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-ms-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.04,rgb(215,215,215)),color-stop(0.55,rgb(230,230,230)),color-stop(1,rgb(255,255,255)));margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;max-width:80%;max-height:30%}.alert-title{background-color :#E6E6E6;padding :5px;border-bottom :1px solid #D1D1D1;font-weight :normal !important;font-size:14px !important;-webkit-border-top-left-radius:3px;-moz-border-radius-topleft:3px;border-top-left-radius:3px;-webkit-border-top-right-radius:3px;-moz-border-radius-topright:3px;border-top-right-radius:3px }.alert-message{padding :5px;font-weight :normal !important;text-align:center;font-size:14px !important}.alert-buttons-container{text-align:center;padding-bottom:5px}.alert-button{background-color:#474747;color:white;-webkit-border-radius:.5em;-moz-border-radius:.5em;border-radius:.5em;padding:2px 10px;background-image:linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-o-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-moz-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-webkit-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-ms-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-webkit-gradient( linear,left bottom,left top,color-stop(0.04,rgb(25,25,25)),color-stop(0.55,rgb(47,47,47)),color-stop(0.68,rgb(71,71,71)) )}.alert-text{color :black !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:c417510033c3f9f78d5d8464b5822543 */
+.mw-mlb-info-box{display:inline-block;overflow:hidden;width:100%;border:1px solid #DDDDDD;border-bottom:2px solid #C9C9C9;-webkit-border-radius:3px;border-radius:3px;background-clip:padding-box;background-color:#FFFFFF}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:9131387e86599ef5a60c42be0d77bbc1 */
+#p-lang .uls-settings-trigger{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAgCAMAAAAVMLmlAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALpQTFRF////W1tbgICAWVlZgICAUVFRgICAWVlZhYWFUlJShYWFVFRUgYGBVVVVgYGBVVVVgICAVFRUVVVVVlZWgYGBgICAVFRUgYGBVFRUgICAgYGBVVVVVVVVgYGBVlZWgYGBVFRUgICAVFRUgICAVVVVgICAVlZWgICAVFRUgICAVVVVgICAVFRUgICAVlZWgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICA9Fa9bgAAADx0Uk5TAA4OFBQWFhcXGRlJSUtLWlpbXV9fYGFhZGRlZmlpa2twcIiIioqPj5GRn5+goKGh6+vv7/Dw+fn8/P7+YuRUVgAAAOlJREFUGBmNwcdWAgEURMFLFCUaAcWAEhQYHBRmCN3//1u+BYcVC6s4p2U3OLrrVxN7Xn7uELoH5w65Dx1g6JNnoLazfz++VnZehkZir4pQ3NjzBg5TwtgBhzFh6kDr294UobiykxZc7ezVdLyx8yrw6pM+8GjnDjsf7gj3/WpiJ7Vhl6OW3eC/mlKdo5teZSHNSoM24XqvTCHTvg0MdDIASpn08/6ZSlkJ6jMpLUBhLc3qKEwIIwUURoSJAs2ltC5AIZUWTbjcSulktJayCvCikx7wJG0VttrfEp5eLpfS4uLtgaOmVOeMP8BAM9RClMO9AAAAAElFTkSuQmCC) no-repeat right top;background:transparent url(//bits.wikimedia.org/static-1.23wmf20/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.png?2014-03-27T16:48:20Z) no-repeat right top!ie;background-image:-webkit-linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzMiI+PGRlZnM+PHBhdGggZD0iTTEzLjU4MiA2LjYzMmgtMS4wNjRjLS4xMzMtLjUzOC0uMzU0LTEuMDY1LS42NDUtMS41NTJsLjc1LS43NWMuMTY0LS4xNjQuMTY0LS40MjkgMC0uNTkzbC0xLjM1OS0xLjM2Yy0uMTY0LS4xNjQtLjQzLS4xNjQtLjU5NCAwbC0uNzUuNzVjLS40OS0uMjk0LTEuMDEyLS41MTItMS41NTEtLjY0NXYtMS4wNjRjMC0uMjMxLS4xODctLjQxOC0uNDE5LS40MThoLTEuOTE4Yy0uMjMxIDAtLjQxOC4xODctLjQxOC40MTh2MS4wNjNjLS41NDEuMTM1LTEuMDYyLjM1Mi0xLjU1Mi42NDZsLS43NS0uNzVjLS4xNjQtLjE2NC0uNDI5LS4xNjQtLjU5MyAwbC0xLjM2IDEuMzZjLS4xNjQuMTY0LS4xNjQuNDI5IDAgLjU5M2wuNzUuNzVjLS4yOTIuNDg4LS40OTQgMS4wMTUtLjYyNyAxLjU1MWgtMS4wNjRjLS4yMzEgMC0uNDE4LjE4Ny0uNDE4LjQxOXYxLjkxOGMwIC4yMzEuMTg3LjQxOC40MTguNDE4aDEuMDQ2Yy4xMzQuNTQyLjM1MSAxLjA2Mi42NDUgMS41NTFsLS43NS43NWMtLjE2NC4xNjQtLjE2NC40MjkgMCAuNTkzbDEuMzYgMS4zNmMuMTY0LjE2NC40MjkuMTY0LjU5MyAwbC43NS0uNzVjLjQ5MS4yOTYgMS4wMS40OTMgMS41NTEuNjI3djEuMDYzYy4wMDEuMjMzLjE4OC40Mi40MTkuNDJoMS45MThjLjIzMSAwIC40MTktLjE4Ny40MTktLjQxOHYtMS4wNjNjLjU0Mi0uMTM0IDEuMDYxLS4zMzMgMS41NTEtLjYyN2wuNzUuNzVjLjE2NC4xNjQuNDMuMTY0LjU5NCAwbDEuMzU5LTEuMzZjLjE2NC0uMTY0LjE2NC0uNDI5IDAtLjU5M2wtLjc1LS43NWMuMjk1LS40ODkuNTEtMS4wMTMuNjQ1LTEuNTUxaDEuMDY0Yy4yMy0uMDAyLjQxOC0uMTg5LjQxOC0uNDJ2LTEuOTE4YzAtLjIzMi0uMTg4LS40MTgtLjQxOC0uNDE4em0tNi41ODIgNC4wMTJjLTEuNDYxIDAtMi42NDUtMS4xODQtMi42NDUtMi42NDRzMS4xODQtMi42NDQgMi42NDUtMi42NDQgMi42NDUgMS4xODQgMi42NDUgMi42NDQtMS4xODQgMi42NDQtMi42NDUgMi42NDR6IiBpZD0iYSIvPjwvZGVmcz48dXNlIHhsaW5rOmhyZWY9IiNhIiBmaWxsPSIjODA4MDgwIi8+PHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxNikiIGZpbGw9IiM1NTUiLz48L3N2Zz4=);background-image:-webkit-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf20/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2014-03-27T16:48:20Z)!ie;background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzMiI+PGRlZnM+PHBhdGggZD0iTTEzLjU4MiA2LjYzMmgtMS4wNjRjLS4xMzMtLjUzOC0uMzU0LTEuMDY1LS42NDUtMS41NTJsLjc1LS43NWMuMTY0LS4xNjQuMTY0LS40MjkgMC0uNTkzbC0xLjM1OS0xLjM2Yy0uMTY0LS4xNjQtLjQzLS4xNjQtLjU5NCAwbC0uNzUuNzVjLS40OS0uMjk0LTEuMDEyLS41MTItMS41NTEtLjY0NXYtMS4wNjRjMC0uMjMxLS4xODctLjQxOC0uNDE5LS40MThoLTEuOTE4Yy0uMjMxIDAtLjQxOC4xODctLjQxOC40MTh2MS4wNjNjLS41NDEuMTM1LTEuMDYyLjM1Mi0xLjU1Mi42NDZsLS43NS0uNzVjLS4xNjQtLjE2NC0uNDI5LS4xNjQtLjU5MyAwbC0xLjM2IDEuMzZjLS4xNjQuMTY0LS4xNjQuNDI5IDAgLjU5M2wuNzUuNzVjLS4yOTIuNDg4LS40OTQgMS4wMTUtLjYyNyAxLjU1MWgtMS4wNjRjLS4yMzEgMC0uNDE4LjE4Ny0uNDE4LjQxOXYxLjkxOGMwIC4yMzEuMTg3LjQxOC40MTguNDE4aDEuMDQ2Yy4xMzQuNTQyLjM1MSAxLjA2Mi42NDUgMS41NTFsLS43NS43NWMtLjE2NC4xNjQtLjE2NC40MjkgMCAuNTkzbDEuMzYgMS4zNmMuMTY0LjE2NC40MjkuMTY0LjU5MyAwbC43NS0uNzVjLjQ5MS4yOTYgMS4wMS40OTMgMS41NTEuNjI3djEuMDYzYy4wMDEuMjMzLjE4OC40Mi40MTkuNDJoMS45MThjLjIzMSAwIC40MTktLjE4Ny40MTktLjQxOHYtMS4wNjNjLjU0Mi0uMTM0IDEuMDYxLS4zMzMgMS41NTEtLjYyN2wuNzUuNzVjLjE2NC4xNjQuNDMuMTY0LjU5NCAwbDEuMzU5LTEuMzZjLjE2NC0uMTY0LjE2NC0uNDI5IDAtLjU5M2wtLjc1LS43NWMuMjk1LS40ODkuNTEtMS4wMTMuNjQ1LTEuNTUxaDEuMDY0Yy4yMy0uMDAyLjQxOC0uMTg5LjQxOC0uNDJ2LTEuOTE4YzAtLjIzMi0uMTg4LS40MTgtLjQxOC0uNDE4em0tNi41ODIgNC4wMTJjLTEuNDYxIDAtMi42NDUtMS4xODQtMi42NDUtMi42NDRzMS4xODQtMi42NDQgMi42NDUtMi42NDQgMi42NDUgMS4xODQgMi42NDUgMi42NDQtMS4xODQgMi42NDQtMi42NDUgMi42NDR6IiBpZD0iYSIvPjwvZGVmcz48dXNlIHhsaW5rOmhyZWY9IiNhIiBmaWxsPSIjODA4MDgwIi8+PHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxNikiIGZpbGw9IiM1NTUiLz48L3N2Zz4=);background-image:linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf20/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2014-03-27T16:48:20Z)!ie;height:16px;width:14px;float:right;cursor:pointer}.skin-vector #p-lang .uls-settings-trigger{ margin-top:3px}#p-lang .uls-settings-trigger:hover{background-position:right -16px}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:77d7d4e84b341f6f1668fa8c16bdf77f */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&lang=en&modules=site&only=styles&skin=vector&*">
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */</style>
+
+<script src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/load.php"></script><style type="text/css"></style><script src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/load(1).php"></script><style title="spinjs"></style>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Block_cipher_mode_of_operation","wgTitle":"Block cipher mode of operation","wgCurRevisionId":599466680,"wgRevisionId":599466680,"wgArticleId":160202,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Block cipher modes of operation","Cryptographic algorithms"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Block_cipher_mode_of_operation","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":false,"wgVisualEditor":{"isPageWatched":false,"magnifyClipIconURL":"//bits.wikimedia.org/static-1.23wmf20/skins/common/images/magnify-clip.png","pageLanguageCode":"en","pageLanguageDir":"ltr","svgMaxSize":2048},"wikilove-recipient":"","wikilove-anon":0,"wgGuidedTourHelpGuiderUrl":"Help:Guided tours/guider","wgFlowTermsOfUseEdit":"By saving changes, you agree to our \u003Ca class=\"external text\" href=\"//wikimediafoundation.org/wiki/Terms_of_use\"\u003ETerms of Use\u003C/a\u003E and agree to irrevocably release your text under the \u003Ca rel=\"nofollow\" class=\"external text\" href=\"//creativecommons.org/licenses/by-sa/3.0\"\u003ECC BY-SA 3.0 License\u003C/a\u003E and \u003Ca class=\"external text\" href=\"//en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License\"\u003EGFDL\u003C/a\u003E","wgULSAcceptLanguageList":["en-us","en"],"wgULSCurrentAutonym":"English","wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgNoticeProject":"wikipedia","wgWikibaseItemId":"Q154021"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"editfont":"default","editondblclick":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nickname":"","norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"showhiddencats":false,"shownumberswatching":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,
+"wllimit":250,"useeditwarning":1,"prefershttps":1,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"multimediaviewer-enable":true,"visualeditor-enable":0,"visualeditor-enable-experimental":0,"visualeditor-betatempdisable":0,"wikilove-enabled":1,"echo-subscriptions-web-page-review":true,"echo-subscriptions-email-page-review":false,"ep_showtoplink":false,"ep_bulkdelorgs":false,"ep_bulkdelcourses":true,"ep_showdyk":true,"echo-subscriptions-web-education-program":true,"echo-subscriptions-email-education-program":false,"echo-notify-show-link":true,"echo-show-alert":true,"echo-email-frequency":0,"echo-email-format":"html","echo-subscriptions-email-system":true,"echo-subscriptions-web-system":true,"echo-subscriptions-email-other":false,"echo-subscriptions-web-other":true,"echo-subscriptions-email-edit-user-talk":false,"echo-subscriptions-web-edit-user-talk":true,"echo-subscriptions-email-reverted":
+false,"echo-subscriptions-web-reverted":true,"echo-subscriptions-email-article-linked":false,"echo-subscriptions-web-article-linked":false,"echo-subscriptions-email-mention":false,"echo-subscriptions-web-mention":true,"echo-subscriptions-web-edit-thank":true,"echo-subscriptions-email-edit-thank":false,"echo-subscriptions-web-flow-discussion":true,"echo-subscriptions-email-flow-discussion":false,"gettingstarted-task-toolbar-show-intro":true,"uls-preferences":"","language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs108":false,
+"searchNs109":false,"searchNs118":false,"searchNs119":false,"searchNs446":false,"searchNs447":false,"searchNs710":false,"searchNs711":false,"searchNs828":false,"searchNs829":false,"gadget-teahouse":1,"gadget-ReferenceTooltips":1,"gadget-DRN-wizard":1,"gadget-charinsert":1,"gadget-mySandbox":1,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:f91b7921db835befbf3c85fee027f8c0 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","skins.vector.compactPersonalBar.defaultTracking","ext.visualEditor.viewPageTarget.init","ext.uls.init","ext.uls.interface","wikibase.client.init","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script>
+<link rel="dns-prefetch" href="http://meta.wikimedia.org/"><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static-1.23wmf20/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Block_cipher_mode_of_operation skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<div id="siteNotice"><div id="centralNotice"></div><!-- CentralNotice --></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Block cipher mode of operation</span></h1>
+						<div id="bodyContent">
+								<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#mw-navigation">navigation</a>, 					<a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="dablink">This article is about cryptography.  For "method of operating", see <a href="http://en.wikipedia.org/wiki/Modus_operandi" title="Modus operandi">modus operandi</a>.</div>
+<p>In <a href="http://en.wikipedia.org/wiki/Cryptography" title="Cryptography">cryptography</a>, a <b>mode of operation</b> is an algorithm that uses a <a href="http://en.wikipedia.org/wiki/Block_cipher" title="Block cipher">block cipher</a> to provide an <a href="http://en.wikipedia.org/wiki/Information_security" title="Information security">information service</a> such as <a href="http://en.wikipedia.org/wiki/Confidentiality" title="Confidentiality">confidentiality</a> or <a href="http://en.wikipedia.org/wiki/Authentication" title="Authentication">authenticity</a>.<sup id="cite_ref-NIST-BLOCK-CIPHER-MODES_1-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-NIST-BLOCK-CIPHER-MODES-1"><span>[</span>1<span>]</span></a></sup> A block cipher by itself is only suitable for the secure cryptographic transformation (encryption or decryption) of one fixed-length group of <a href="http://en.wikipedia.org/wiki/Bit" title="Bit">bits</a> called a <a href="http://en.wikipedia.org/wiki/Block_(data_storage)" title="Block (data storage)">block</a>.<sup id="cite_ref-FERGUSON_2-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-FERGUSON-2"><span>[</span>2<span>]</span></a></sup> A mode of operation describes how to repeatedly apply a cipher's single-block operation to securely transform amounts of data larger than a block.<sup id="cite_ref-NIST-PROPOSED-MODES_3-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-NIST-PROPOSED-MODES-3"><span>[</span>3<span>]</span></a></sup><sup id="cite_ref-HAC_4-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-HAC-4"><span>[</span>4<span>]</span></a></sup><sup id="cite_ref-ISO-10116_5-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-ISO-10116-5"><span>[</span>5<span>]</span></a></sup></p>
+<p>Most modes require a unique binary sequence, often called an <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">initialization vector</a> (IV), for each encryption operation. The IV has to be non-repeating and for some modes random as well. The initialization vector is used to ensure distinct <a href="http://en.wikipedia.org/wiki/Ciphertext" title="Ciphertext">ciphertexts</a> are produced even when the same <a href="http://en.wikipedia.org/wiki/Plaintext" title="Plaintext">plaintext</a> is encrypted multiple times independently with the same <a href="http://en.wikipedia.org/wiki/Key_(cryptography)" title="Key (cryptography)">key</a>.<sup id="cite_ref-HUANG_6-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-HUANG-6"><span>[</span>6<span>]</span></a></sup> Block ciphers have one or more <a href="http://en.wikipedia.org/wiki/Block_size_(cryptography)" title="Block size (cryptography)">block size</a>(s), but during transformation the block size is always fixed. Block cipher modes operate on whole blocks and require that the last part of the data be <a href="http://en.wikipedia.org/wiki/Padding_(cryptography)" title="Padding (cryptography)">padded</a> to a full block if it is smaller than the current block size.<sup id="cite_ref-FERGUSON_2-1" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-FERGUSON-2"><span>[</span>2<span>]</span></a></sup> There are, however, modes that do not require padding because they effectively use a block cipher as a <a href="http://en.wikipedia.org/wiki/Stream_cipher" title="Stream cipher">stream cipher</a>.</p>
+<p>Historically, encryption modes have been studied extensively in regard to their error propagation properties under various scenarios of data modification. Later development regarded <a href="http://en.wikipedia.org/wiki/Integrity_protection" title="Integrity protection" class="mw-redirect">integrity protection</a> as an entirely separate cryptographic goal. Some modern modes of operation combine <a href="http://en.wikipedia.org/wiki/Confidentiality" title="Confidentiality">confidentiality</a> and <a href="http://en.wikipedia.org/wiki/Authentication" title="Authentication">authenticity</a> in an efficient way, and are known as <a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">authenticated encryption</a> modes.<sup id="cite_ref-NIST-CURRENT-MODES_7-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-NIST-CURRENT-MODES-7"><span>[</span>7<span>]</span></a></sup></p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+<span class="toctoggle">&nbsp;[<a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#History_and_standardization"><span class="tocnumber">1</span> <span class="toctext">History and standardization</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Initialization_vector_.28IV.29"><span class="tocnumber">2</span> <span class="toctext">Initialization vector (IV)</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Padding"><span class="tocnumber">3</span> <span class="toctext">Padding</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Common_modes"><span class="tocnumber">4</span> <span class="toctext">Common modes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_.28ECB.29"><span class="tocnumber">4.1</span> <span class="toctext">Electronic codebook (ECB)</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29"><span class="tocnumber">4.2</span> <span class="toctext">Cipher-block chaining (CBC)</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Propagating_cipher-block_chaining_.28PCBC.29"><span class="tocnumber">4.3</span> <span class="toctext">Propagating cipher-block chaining (PCBC)</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_feedback_.28CFB.29"><span class="tocnumber">4.4</span> <span class="toctext">Cipher feedback (CFB)</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Output_feedback_.28OFB.29"><span class="tocnumber">4.5</span> <span class="toctext">Output feedback (OFB)</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29"><span class="tocnumber">4.6</span> <span class="toctext">Counter (CTR)</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Error_propagation"><span class="tocnumber">5</span> <span class="toctext">Error propagation</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Authenticated_encryption"><span class="tocnumber">6</span> <span class="toctext">Authenticated encryption</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Other_modes_and_other_cryptographic_primitives"><span class="tocnumber">7</span> <span class="toctext">Other modes and other cryptographic primitives</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#See_also"><span class="tocnumber">8</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#References"><span class="tocnumber">9</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="History_and_standardization">History and standardization</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=1" title="Edit section: History and standardization">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The earliest modes of operation, ECB, CBC, OFB, and CFB (see below for all), date back to 1981 and were specified in <a rel="nofollow" class="external text" href="http://www.itl.nist.gov/fipspubs/fip81.htm">FIPS 81</a>, <i>DES Modes of Operation</i>. In 2001, NIST revised its list of approved modes of operation by including AES as a block cipher and adding CTR mode in <a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">SP800-38A</a>, <i>Recommendation for Block Cipher Modes of Operation</i>. Finally, in January, 2010, NIST added <a href="http://en.wikipedia.org/w/index.php?title=XTS-AES&action=edit&redlink=1" class="new" title="XTS-AES (page does not exist)">XTS-AES</a> in <a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38E/nist-sp-800-38E.pdf">SP800-38E</a>, <i>Recommendation for Block Cipher Modes of Operation: The XTS-AES Mode for Confidentiality on Storage Devices</i>. Other confidentiality modes exist which have not been approved by NIST. For example, CTS is <a href="http://en.wikipedia.org/wiki/Ciphertext_stealing" title="Ciphertext stealing">ciphertext stealing</a> mode and available in many popular cryptographic libraries.</p>
+<p>The block cipher modes ECB, CBC, OFB, CFB, CTR, and <a href="http://en.wikipedia.org/wiki/XTS_mode" title="XTS mode" class="mw-redirect">XTS</a> provide confidentiality, but they do not protect against accidental modification or malicious tampering. Modification or tampering can be detected with a separate <a href="http://en.wikipedia.org/wiki/Message_authentication_code" title="Message authentication code">message authentication code</a> such as <a href="http://en.wikipedia.org/wiki/CBC-MAC" title="CBC-MAC">CBC-MAC</a>, or a <a href="http://en.wikipedia.org/wiki/Digital_signature" title="Digital signature">digital signature</a>. The cryptographic community recognized the need for dedicated integrity assurances and NIST responded with HMAC, CMAC, and GMAC. <a href="http://en.wikipedia.org/wiki/HMAC" title="HMAC" class="mw-redirect">HMAC</a> was approved in 2002 as <a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/fips/fips198/fips-198a.pdf">FIPS 198</a>, <i>The Keyed-Hash Message Authentication Code (HMAC)</i>, <a href="http://en.wikipedia.org/wiki/CMAC" title="CMAC">CMAC</a> was released in 2005 under <a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf">SP800-38B</a>, <i>Recommendation for Block Cipher Modes of Operation: The CMAC Mode for Authentication</i>, and GMAC was formalized in 2007 under <a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf">SP800-38D</a>, <i>Recommendation for Block Cipher Modes of Operation: Galois/Counter Mode (GCM) and GMAC</i>.</p>
+<p>After observing that compositing a confidentiality mode with an authenticity mode could be difficult and error prone, the cryptographic community began to supply modes which combined confidentiality and data integrity into a single cryptographic primitive. The modes are referred to as <a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">authenticated encryption</a>, AE or "authenc". Examples of authenc modes are <a href="http://en.wikipedia.org/wiki/CCM_mode" title="CCM mode">CCM</a> (<a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38C/SP800-38C_updated-July20_2007.pdf">SP800-38C</a>), <a href="http://en.wikipedia.org/wiki/GCM_mode" title="GCM mode" class="mw-redirect">GCM</a> (<a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf">SP800-38D</a>), <a href="http://en.wikipedia.org/wiki/CWC_mode" title="CWC mode">CWC</a>, <a href="http://en.wikipedia.org/wiki/EAX_mode" title="EAX mode">EAX</a>, <a href="http://en.wikipedia.org/wiki/IAPM_mode" title="IAPM mode" class="mw-redirect">IAPM</a>, and <a href="http://en.wikipedia.org/wiki/OCB_mode" title="OCB mode">OCB</a>.</p>
+<p>Modes of operation are nowadays defined by a number of national and internationally recognized standards bodies. Notable standards organizations include <a href="http://en.wikipedia.org/wiki/NIST" title="NIST" class="mw-redirect">NIST</a>, <a href="http://en.wikipedia.org/wiki/International_Organization_for_Standardization" title="International Organization for Standardization">ISO</a> (with ISO/IEC 10116<sup id="cite_ref-ISO-10116_5-1" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-ISO-10116-5"><span>[</span>5<span>]</span></a></sup>), the <a href="http://en.wikipedia.org/wiki/International_Electrotechnical_Commission" title="International Electrotechnical Commission">IEC</a>, the <a href="http://en.wikipedia.org/wiki/IEEE" title="IEEE" class="mw-redirect">IEEE</a>, the national <a href="http://en.wikipedia.org/wiki/ANSI" title="ANSI" class="mw-redirect">ANSI</a>, and the <a href="http://en.wikipedia.org/wiki/IETF" title="IETF" class="mw-redirect">IETF</a>.</p>
+<h2><span class="mw-headline" id="Initialization_vector_.28IV.29">Initialization vector (IV)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=2" title="Edit section: Initialization vector (IV)">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="rellink relarticle mainarticle">Main article: <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">Initialization vector</a></div>
+<p>An <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">initialization vector</a> (IV) or starting variable (SV)<sup id="cite_ref-ISO-10116_5-2" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-ISO-10116-5"><span>[</span>5<span>]</span></a></sup> is a block of bits that is used by several modes to randomize the encryption and hence to produce distinct ciphertexts even if the same plaintext is encrypted multiple times, without the need for a slower re-keying process.<sup id="cite_ref-HUANG_6-1" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-HUANG-6"><span>[</span>6<span>]</span></a></sup></p>
+<p>An <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">initialization vector</a> has different security requirements than a key, so the <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">IV</a> usually does not need to be secret. However, in most cases, it is important that an <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">initialization vector</a> is never reused under the same key. For CBC and CFB, reusing an IV leaks some information about the first block of plaintext, and about any common prefix shared by the two messages. For OFB and CTR, reusing an IV completely destroys security.<sup id="cite_ref-HUANG_6-2" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-HUANG-6"><span>[</span>6<span>]</span></a></sup> This can be seen because both modes effectively create a bitstream that is XORed with the plaintext, and this bitstream is dependent on the password and IV only. Reusing a bitstream destroys security.<sup id="cite_ref-8" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-8"><span>[</span>8<span>]</span></a></sup> In CBC mode, the <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">IV</a> must, in addition, be unpredictable at encryption time; in particular, the (previously) common practice of re-using the last ciphertext block of a message as the <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">IV</a> for the next message is insecure (for example, this method was used by SSL 2.0). If an attacker knows the <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">IV</a> (or the previous block of ciphertext) before he specifies the next plaintext, he can check his guess about plaintext of some block that was encrypted with the same key before (this is known as the TLS CBC IV attack).<sup id="cite_ref-9" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-9"><span>[</span>9<span>]</span></a></sup></p>
+<h2><span class="mw-headline" id="Padding">Padding</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=3" title="Edit section: Padding">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="rellink relarticle mainarticle">Main article: <a href="http://en.wikipedia.org/wiki/Padding_(cryptography)" title="Padding (cryptography)">Padding (cryptography)</a></div>
+<p>A <a href="http://en.wikipedia.org/wiki/Block_cipher" title="Block cipher">block cipher</a> works on units of a fixed <a href="http://en.wikipedia.org/wiki/Block_size_(cryptography)" title="Block size (cryptography)">size</a> (known as a <i>block size</i>), but messages come in a variety of lengths. So some modes (namely <a href="http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Electronic_codebook_.28ECB.29" title="Block cipher modes of operation" class="mw-redirect">ECB</a> and <a href="http://en.wikipedia.org/wiki/Cipher_block_chaining" title="Cipher block chaining" class="mw-redirect">CBC</a>) require that the final block be padded before encryption. Several <a href="http://en.wikipedia.org/wiki/Padding_(cryptography)" title="Padding (cryptography)">padding</a> schemes exist. The simplest is to add null bytes to the <a href="http://en.wikipedia.org/wiki/Plaintext" title="Plaintext">plaintext</a> to bring its length up to a multiple of the block size, but care must be taken that the original length of the plaintext can be recovered; this is so, for example, if the plaintext is a <a href="http://en.wikipedia.org/wiki/C_(programming_language)" title="C (programming language)">C</a> style <a href="http://en.wikipedia.org/wiki/Literal_string" title="Literal string" class="mw-redirect">string</a> which contains no null bytes except at the end. Slightly more complex is the original <a href="http://en.wikipedia.org/wiki/Data_Encryption_Standard" title="Data Encryption Standard">DES</a> method, which is to add a single one <a href="http://en.wikipedia.org/wiki/Bit" title="Bit">bit</a>, followed by enough zero <a href="http://en.wikipedia.org/wiki/Bit" title="Bit">bits</a> to fill out the block; if the message ends on a block boundary, a whole padding block will be added. Most sophisticated are CBC-specific schemes such as <a href="http://en.wikipedia.org/wiki/Ciphertext_stealing" title="Ciphertext stealing">ciphertext stealing</a> or <a href="http://en.wikipedia.org/wiki/Residual_block_termination" title="Residual block termination">residual block termination</a>, which do not cause any extra ciphertext, at the expense of some additional complexity. <a href="http://en.wikipedia.org/wiki/Bruce_Schneier" title="Bruce Schneier">Schneier</a> and <a href="http://en.wikipedia.org/wiki/Niels_Ferguson" title="Niels Ferguson">Ferguson</a> suggest two possibilities, both simple: append a byte with value 128 (hex 80), followed by as many zero bytes as needed to fill the last block, or pad the last block with <i>n</i> bytes all with value <i>n</i>.</p>
+<p>CFB, OFB and CTR modes do not require any special measures to handle messages whose lengths are not multiples of the block size, since the modes work by XORing the plaintext with the output of the block cipher. The last partial block of plaintext is XORed with the first few bytes of the last <a href="http://en.wikipedia.org/wiki/Keystream" title="Keystream">keystream</a> block, producing a final ciphertext block that is the same size as the final partial plaintext block. This characteristic of stream ciphers makes them suitable for applications that require the encrypted ciphertext data to be the same size as the original plaintext data, and for applications that transmit data in streaming form where it is inconvenient to add padding bytes.</p>
+<h2><span class="mw-headline" id="Common_modes">Common modes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=4" title="Edit section: Common modes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Many modes of operation have been defined. Some of these are described below.</p>
+<h3><span class="mw-headline" id="Electronic_codebook_.28ECB.29">Electronic codebook (ECB)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=5" title="Edit section: Electronic codebook (ECB)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<table class="infobox" cellspacing="3" style="border-spacing:3px;width:22em;">
+<tbody><tr>
+<th colspan="2" style="text-align:center;background:#ccf;;">ECB</th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;">Electronic codebook</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Encryption parallelizable:</th>
+<td>Yes</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Decryption parallelizable:</th>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<p>The simplest of the encryption modes is the <b>electronic codebook</b> (ECB) mode. The message is divided into blocks, and each block is encrypted separately.</p>
+<p><a href="http://en.wikipedia.org/wiki/File:ECB_encryption.svg" class="image"><img alt="ECB encryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-ECB_encryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/d6/ECB_encryption.svg/902px-ECB_encryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/d6/ECB_encryption.svg/1202px-ECB_encryption.svg.png 2x"></a></p>
+<p><a href="http://en.wikipedia.org/wiki/File:ECB_decryption.svg" class="image"><img alt="ECB decryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-ECB_decryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ECB_decryption.svg/902px-ECB_decryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ECB_decryption.svg/1202px-ECB_decryption.svg.png 2x"></a></p>
+<p>The disadvantage of this method is that identical <a href="http://en.wikipedia.org/wiki/Plaintext" title="Plaintext">plaintext</a> blocks are encrypted into identical <a href="http://en.wikipedia.org/wiki/Ciphertext" title="Ciphertext">ciphertext</a> blocks; thus, it does not hide data patterns well. In some senses, it doesn't provide serious message confidentiality, and it is not recommended for use in cryptographic protocols at all.</p>
+<p>A striking example of the degree to which ECB can leave plaintext data patterns in the ciphertext can be seen when ECB mode is used to encrypt a <a href="http://en.wikipedia.org/wiki/Bitmap_image" title="Bitmap image" class="mw-redirect">bitmap image</a> which uses large areas of uniform colour. While the colour of each individual <a href="http://en.wikipedia.org/wiki/Pixel" title="Pixel">pixel</a> is encrypted, the overall image may still be discerned as the pattern of identically coloured pixels in the original remains in the encrypted version.</p>
+<div class="thumb tnone" style="width: 609px; margin: 0 auto;">
+<div class="thumbinner">
+<div style="float: left; margin: 1px; width: 198px">
+<div class="thumbimage"><a href="http://en.wikipedia.org/wiki/File:Tux.jpg" class="image"><img alt="" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/Tux.jpg" width="196" height="216"></a></div>
+<div class="thumbcaption" style="clear:left">Original image</div>
+</div>
+<div style="float: left; margin: 1px; width: 198px">
+<div class="thumbimage"><a href="http://en.wikipedia.org/wiki/File:Tux_ecb.jpg" class="image"><img alt="" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/Tux_ecb.jpg" width="196" height="216"></a></div>
+<div class="thumbcaption" style="clear:left">Encrypted using ECB mode</div>
+</div>
+<div style="float: left; margin: 1px; width: 198px">
+<div class="thumbimage"><a href="http://en.wikipedia.org/wiki/File:Tux_secure.jpg" class="image"><img alt="" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/Tux_secure.jpg" width="196" height="216"></a></div>
+<div class="thumbcaption" style="clear:left">Modes other than ECB result in pseudo-randomness</div>
+</div>
+<div class="thumbcaption" style="clear: left; text-align: left; background: transparent">The image on the right is how the image might appear encrypted with CBC, CTR or any of the other more secure modes—indistinguishable from random noise. Note that the random appearance of the image on the right does not ensure that the image has been securely encrypted; many kinds of insecure encryption have been developed which would produce output just as "random-looking".</div>
+</div>
+</div>
+<p>ECB mode can also make protocols without integrity protection even more susceptible to <a href="http://en.wikipedia.org/wiki/Replay_attack" title="Replay attack">replay attacks</a>, since each block gets decrypted in exactly the same way.</p>
+<h3><span class="mw-headline" id="Cipher-block_chaining_.28CBC.29">Cipher-block chaining (CBC)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=6" title="Edit section: Cipher-block chaining (CBC)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<table class="infobox" cellspacing="3" style="border-spacing:3px;width:22em;">
+<tbody><tr>
+<th colspan="2" style="text-align:center;background:#ccf;;">CBC</th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;">Cipher-block chaining</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Encryption parallelizable:</th>
+<td>No</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Decryption parallelizable:</th>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<p>IBM invented the cipher-block chaining (CBC) mode of operation in 1976.<sup id="cite_ref-10" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-10"><span>[</span>10<span>]</span></a></sup> In CBC mode, each block of plaintext is <a href="http://en.wikipedia.org/wiki/XOR" title="XOR" class="mw-redirect">XORed</a> with the previous ciphertext block before being encrypted. This way, each ciphertext block depends on all plaintext blocks processed up to that point. To make each message unique, an <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">initialization vector</a> must be used in the first block.</p>
+<p><a href="http://en.wikipedia.org/wiki/File:CBC_encryption.svg" class="image"><img alt="CBC encryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-CBC_encryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/80/CBC_encryption.svg/902px-CBC_encryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/80/CBC_encryption.svg/1202px-CBC_encryption.svg.png 2x"></a></p>
+<p><a href="http://en.wikipedia.org/wiki/File:CBC_decryption.svg" class="image"><img alt="CBC decryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-CBC_decryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/CBC_decryption.svg/902px-CBC_decryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/2a/CBC_decryption.svg/1202px-CBC_decryption.svg.png 2x"></a></p>
+<p>If the first block has index 1, the mathematical formula for CBC encryption is</p>
+<dl>
+<dd><img class="tex" alt="C_i = E_K(P_i \oplus C_{i-1}), C_0 = IV" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/00fa22607d5abab10c6b654ae99dd749.png"></dd>
+</dl>
+<p>while the mathematical formula for CBC decryption is</p>
+<dl>
+<dd><img class="tex" alt="P_i = D_K(C_i) \oplus C_{i-1}, C_0 = IV." src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/9ae3e95650b9c89c4947f472ada04d2c.png"></dd>
+</dl>
+<p>CBC has been the most commonly used mode of operation. Its main drawbacks are that encryption is sequential (i.e., it cannot be parallelized), and that the message must be padded to a multiple of the cipher block size. One way to handle this last issue is through the method known as <a href="http://en.wikipedia.org/wiki/Ciphertext_stealing" title="Ciphertext stealing">ciphertext stealing</a>. Note that a one-bit change in a plaintext or IV affects all following ciphertext blocks.</p>
+<p>Decrypting with the incorrect IV causes the first block of plaintext to be corrupt but subsequent plaintext blocks will be correct. This is because a plaintext block can be recovered from two adjacent blocks of ciphertext. As a consequence, decryption <i>can</i> be parallelized. Note that a one-bit change to the ciphertext causes complete corruption of the corresponding block of plaintext, and inverts the corresponding bit in the following block of plaintext, but the rest of the blocks remain intact.</p>
+<h3><span class="mw-headline" id="Propagating_cipher-block_chaining_.28PCBC.29">Propagating cipher-block chaining (PCBC)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=7" title="Edit section: Propagating cipher-block chaining (PCBC)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<table class="infobox" cellspacing="3" style="border-spacing:3px;width:22em;">
+<tbody><tr>
+<th colspan="2" style="text-align:center;background:#ccf;;">PCBC</th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;">Propagating cipher-block chaining</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Encryption parallelizable:</th>
+<td>No</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Decryption parallelizable:</th>
+<td>No</td>
+</tr>
+</tbody></table>
+<p>The propagating cipher-block chaining<sup id="cite_ref-11" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-11"><span>[</span>11<span>]</span></a></sup> or plaintext cipher-block chaining<sup id="cite_ref-12" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-12"><span>[</span>12<span>]</span></a></sup> mode was designed to cause small changes in the ciphertext to propagate indefinitely when decrypting, as well as when encrypting.</p>
+<p><a href="http://en.wikipedia.org/wiki/File:PCBC_encryption.svg" class="image"><img alt="PCBC encryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-PCBC_encryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/47/PCBC_encryption.svg/902px-PCBC_encryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/47/PCBC_encryption.svg/1202px-PCBC_encryption.svg.png 2x"></a></p>
+<p><a href="http://en.wikipedia.org/wiki/File:PCBC_decryption.svg" class="image"><img alt="PCBC decryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-PCBC_decryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/5b/PCBC_decryption.svg/902px-PCBC_decryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/5b/PCBC_decryption.svg/1202px-PCBC_decryption.svg.png 2x"></a></p>
+<p>Encryption and decryption algorithms are as follows:</p>
+<dl>
+<dd><img class="tex" alt="C_i = E_K(P_i \oplus P_{i-1} \oplus C_{i-1}), P_0 \oplus C_0 = IV" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/2ec499341395652a00b7b049d04c045b.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="P_i = D_K(C_i) \oplus P_{i-1} \oplus C_{i-1}, P_0 \oplus C_0 = IV" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/308c99fb79afb2a921762a8305eecb1c.png"></dd>
+</dl>
+<p>PCBC is used in <a href="http://en.wikipedia.org/wiki/Kerberos_(protocol)" title="Kerberos (protocol)">Kerberos v4</a> and <a href="http://en.wikipedia.org/wiki/WASTE" title="WASTE">WASTE</a>, most notably, but otherwise is not common. On a message encrypted in PCBC mode, if two adjacent ciphertext blocks are exchanged, this does not affect the decryption of subsequent blocks.<sup id="cite_ref-13" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-13"><span>[</span>13<span>]</span></a></sup> For this reason, PCBC is not used in Kerberos v5.</p>
+<h3><span class="mw-headline" id="Cipher_feedback_.28CFB.29">Cipher feedback (CFB)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=8" title="Edit section: Cipher feedback (CFB)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<table class="infobox" cellspacing="3" style="border-spacing:3px;width:22em;">
+<tbody><tr>
+<th colspan="2" style="text-align:center;background:#ccf;;">CFB</th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;">Cipher feedback</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Encryption parallelizable:</th>
+<td>No</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Decryption parallelizable:</th>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<p>The <i>cipher feedback</i> (CFB) mode, a close relative of CBC, makes a block cipher into a self-synchronizing <a href="http://en.wikipedia.org/wiki/Stream_cipher" title="Stream cipher">stream cipher</a>. Operation is very similar; in particular, CFB decryption is almost identical to CBC encryption performed in reverse:</p>
+<dl>
+<dd><img class="tex" alt="C_i = E_K (C_{i-1}) \oplus P_i" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/8f96f3ed0abec403db53fd0783695e9d.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="P_i = E_K (C_{i-1}) \oplus C_i" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/fd8212807eb980bbfe556e3d34e0e77d.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="C_{0} = \ \mbox{IV}" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/c203aa4a5ef84dfbc9c33ac63972f6d4.png"></dd>
+</dl>
+<p><a href="http://en.wikipedia.org/wiki/File:CFB_encryption.svg" class="image"><img alt="CFB encryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-CFB_encryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/9/9d/CFB_encryption.svg/902px-CFB_encryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/9/9d/CFB_encryption.svg/1202px-CFB_encryption.svg.png 2x"></a></p>
+<p><a href="http://en.wikipedia.org/wiki/File:CFB_decryption.svg" class="image"><img alt="CFB decryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-CFB_decryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/57/CFB_decryption.svg/902px-CFB_decryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/57/CFB_decryption.svg/1202px-CFB_decryption.svg.png 2x"></a></p>
+<p>This simplest way of using CFB described above is not any more self-synchronizing than other cipher modes like CBC. If a whole blocksize of ciphertext is lost both CBC and CFB will synchronize, but losing only a single byte or bit will permanently throw off decryption. To be able to synchronize after the loss of only a single byte or bit, a single byte or bit must be encrypted at a time. CFB can be used this way when combined with a <a href="http://en.wikipedia.org/wiki/Shift_register" title="Shift register">shift register</a> as the input for the block cipher.</p>
+<p>To use CFB to make a self-synchronizing stream cipher that will synchronize for any multiple of x bits lost, start by initializing a shift register the size of the block size with the initialization vector. This is encrypted with the block cipher, and the highest x bits of the result are XOR'ed with x bits of the plaintext to produce x bits of ciphertext. These x bits of output are shifted into the shift register, and the process repeats with the next x bits of plaintext. Decryption is similar, start with the initialization vector, encrypt, and XOR the high bits of the result with x bits of the ciphertext to produce x bits of plaintext. Then shift the x bits of the ciphertext into the shift register. This way of proceeding is known as CFB-8 or CFB-1 (according to the size of the shifting).<sup id="cite_ref-AESBlockDocumentation_14-0" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-AESBlockDocumentation-14"><span>[</span>14<span>]</span></a></sup></p>
+<p>In notation, where S<sub>i</sub> is the ith state of the shift register, a &lt;&lt; x is <i>a</i> shifted up <i>x</i> bits, head(a, x) is the x highest bits of a and n is number of bits of IV:</p>
+<dl>
+<dd><img class="tex" alt="C_i = \mbox{head}(E_K (S_{i-1}), x) \oplus P_i" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/8822a1151212de7709d5fbabe010150e.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="P_i = \mbox{head}(E_K (S_{i-1}), x) \oplus C_i" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/b9df6da7e96287fbe781a2a95a77b8d2.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="S_i = \ ((S_{i-1} &lt;&lt; x) + C_i) \mbox{ mod } 2^n" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/7572072f8266f461cf53bab409968ae5.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="S_{0} = \ \mbox{IV}" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/5a0f456f1c08a275f06b6c5a0a10772f.png"></dd>
+</dl>
+<p>If x bits are lost from the ciphertext, the cipher will output incorrect plaintext until the shift register once again equals a state it held while encrypting, at which point the cipher has resynchronized. This will result in at most one blocksize of output being garbled.</p>
+<p>Like CBC mode, changes in the plaintext propagate forever in the ciphertext, and encryption cannot be parallelized. Also like CBC, decryption can be parallelized. When decrypting, a one-bit change in the ciphertext affects two plaintext blocks: a one-bit change in the corresponding plaintext block, and complete corruption of the following plaintext block. Later plaintext blocks are decrypted normally.</p>
+<p>CFB shares two advantages over CBC mode with the stream cipher modes OFB and CTR: the block cipher is only ever used in the encrypting direction, and the message does not need to be padded to a multiple of the cipher block size (though <a href="http://en.wikipedia.org/wiki/Ciphertext_stealing" title="Ciphertext stealing">ciphertext stealing</a> can also be used to make padding unnecessary).</p>
+<h3><span class="mw-headline" id="Output_feedback_.28OFB.29">Output feedback (OFB)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=9" title="Edit section: Output feedback (OFB)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<table class="infobox" cellspacing="3" style="border-spacing:3px;width:22em;">
+<tbody><tr>
+<th colspan="2" style="text-align:center;background:#ccf;;">OFB</th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;">Output feedback</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Encryption parallelizable:</th>
+<td>No</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Decryption parallelizable:</th>
+<td>No</td>
+</tr>
+</tbody></table>
+<p>The <i>output feedback</i> (OFB) mode makes a block cipher into a synchronous <a href="http://en.wikipedia.org/wiki/Stream_cipher" title="Stream cipher">stream cipher</a>. It generates <a href="http://en.wikipedia.org/wiki/Keystream" title="Keystream">keystream</a> blocks, which are then <a href="http://en.wikipedia.org/wiki/XOR" title="XOR" class="mw-redirect">XORed</a> with the plaintext blocks to get the ciphertext. Just as with other stream ciphers, flipping a bit in the ciphertext produces a flipped bit in the plaintext at the same location. This property allows many <a href="http://en.wikipedia.org/wiki/Error-correcting_code" title="Error-correcting code" class="mw-redirect">error correcting codes</a> to function normally even when applied before encryption.</p>
+<p>Because of the symmetry of the XOR operation, encryption and decryption are exactly the same:</p>
+<dl>
+<dd><img class="tex" alt="C_j = P_j \oplus O_j" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/916c34f1553b5cbac97ae0325e8dce04.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="P_j = C_j \oplus O_j" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/692870cf8debceb5b352d33d77002cb6.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="O_j = \ E_K (I_{j})" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/ebcbf70d71a2955646ae44a4f2a0cce6.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="I_j =\ O_{j-1}" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/82470eba042f69824385dd68c9adc127.png"></dd>
+</dl>
+<dl>
+<dd><img class="tex" alt="I_{0}= \ \mbox{IV}" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/c9c715d6f2ca2aba04a3623be3bf7daf.png"></dd>
+</dl>
+<p><a href="http://en.wikipedia.org/wiki/File:OFB_encryption.svg" class="image"><img alt="OFB encryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-OFB_encryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OFB_encryption.svg/902px-OFB_encryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OFB_encryption.svg/1202px-OFB_encryption.svg.png 2x"></a></p>
+<p><a href="http://en.wikipedia.org/wiki/File:OFB_decryption.svg" class="image"><img alt="OFB decryption.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-OFB_decryption.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f5/OFB_decryption.svg/902px-OFB_decryption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f5/OFB_decryption.svg/1202px-OFB_decryption.svg.png 2x"></a></p>
+<p>Each output feedback block cipher operation depends on all previous ones, and so cannot be performed in parallel. However, because the plaintext or ciphertext is only used for the final XOR, the block cipher operations may be performed in advance, allowing the final step to be performed in parallel once the plaintext or ciphertext is available.</p>
+<p>It is possible to obtain an OFB mode keystream by using CBC mode with a constant string of zeroes as input. This can be useful, because it allows the usage of fast hardware implementations of CBC mode for OFB mode encryption.</p>
+<p>Using OFB mode with a partial block as feedback like CFB mode reduces the average cycle length by a factor of <img class="tex" alt="2^{32}" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/c9358d003db075191263502fed7cc391.png"> or more. A mathematical model proposed by Davies and Parkin and substantiated by experimental results showed that only with full feedback an average cycle length near to the obtainable maximum can be achieved. For this reason, support for truncated feedback was removed from the specification of OFB.<sup id="cite_ref-15" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-15"><span>[</span>15<span>]</span></a></sup><sup id="cite_ref-16" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-16"><span>[</span>16<span>]</span></a></sup></p>
+<h3><span class="mw-headline" id="Counter_.28CTR.29">Counter (CTR)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=10" title="Edit section: Counter (CTR)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<table class="infobox" cellspacing="3" style="border-spacing:3px;width:22em;">
+<tbody><tr>
+<th colspan="2" style="text-align:center;background:#ccf;;">CTR</th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;">Counter</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Encryption parallelizable:</th>
+<td>Yes</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left;background:#ddf;;">Decryption parallelizable:</th>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<dl>
+<dd><i>Note: CTR mode (CM) is also known as</i> integer counter mode <i>(ICM) and</i> segmented integer counter <i>(SIC) mode</i></dd>
+</dl>
+<p>Like OFB, counter mode turns a <a href="http://en.wikipedia.org/wiki/Block_cipher" title="Block cipher">block cipher</a> into a <a href="http://en.wikipedia.org/wiki/Stream_cipher" title="Stream cipher">stream cipher</a>. It generates the next <a href="http://en.wikipedia.org/wiki/Keystream" title="Keystream">keystream</a> block by encrypting successive values of a "counter". The counter can be any function which produces a sequence which is guaranteed not to repeat for a long time, although an actual increment-by-one counter is the simplest and most popular. The usage of a simple deterministic input function used to be controversial; critics argued that "deliberately exposing a cryptosystem to a known systematic input represents an unnecessary risk."<sup id="cite_ref-17" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-17"><span>[</span>17<span>]</span></a></sup> By now, CTR mode is widely accepted, and problems resulting from the input function are recognized as a weakness of the underlying block cipher instead of the CTR mode.<sup id="cite_ref-18" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-18"><span>[</span>18<span>]</span></a></sup> Along with CBC, CTR mode is one of two block cipher modes recommended by Niels Ferguson and Bruce Schneier.<sup id="cite_ref-19" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-19"><span>[</span>19<span>]</span></a></sup></p>
+<p>CTR mode has similar characteristics to OFB, but also allows a random access property during decryption. CTR mode is well suited to operate on a multi-processor machine where blocks can be encrypted in parallel. Furthermore, it does not suffer from the short-cycle problem that can affect OFB.<sup id="cite_ref-20" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-20"><span>[</span>20<span>]</span></a></sup></p>
+<p>Note that the <a href="http://en.wikipedia.org/wiki/Cryptographic_nonce" title="Cryptographic nonce">nonce</a> in this diagram is the same thing as the <a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">initialization vector</a> (IV) in the other diagrams. The IV/nonce and the counter can be combined together using any lossless operation (concatenation, addition, or XOR) to produce the actual unique counter block for encryption.</p>
+<p><a href="http://en.wikipedia.org/wiki/File:CTR_encryption_2.svg" class="image"><img alt="CTR encryption 2.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-CTR_encryption_2.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/4d/CTR_encryption_2.svg/902px-CTR_encryption_2.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/4d/CTR_encryption_2.svg/1202px-CTR_encryption_2.svg.png 2x"></a></p>
+<p><a href="http://en.wikipedia.org/wiki/File:CTR_decryption_2.svg" class="image"><img alt="CTR decryption 2.svg" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/601px-CTR_decryption_2.svg.png" width="601" height="242" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/CTR_decryption_2.svg/902px-CTR_decryption_2.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/3c/CTR_decryption_2.svg/1202px-CTR_decryption_2.svg.png 2x"></a></p>
+<h2><span class="mw-headline" id="Error_propagation">Error propagation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=11" title="Edit section: Error propagation">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Before the widespread use of <a href="http://en.wikipedia.org/wiki/Message_authentication_codes" title="Message authentication codes" class="mw-redirect">message authentication codes</a> and <a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">authenticated encryption</a>, it was common to discuss the "error propagation" properties as a selection criterion for a mode of operation. It might be observed, for example, that a one-block error in the transmitted ciphertext would result in a one-block error in the reconstructed plaintext for ECB mode encryption, while in CBC mode such an error would affect two blocks.</p>
+<p>Some felt that such resilience was desirable in the face of random errors (e.g., line noise), while others argued that error correcting increased the scope for attackers to maliciously tamper with a message.</p>
+<p>However, when proper integrity protection is used, such an error will result (with high probability) in the entire message being rejected. If resistance to random error is desirable, <a href="http://en.wikipedia.org/wiki/Error-correcting_code" title="Error-correcting code" class="mw-redirect">error-correcting codes</a> should be applied to the ciphertext before transmission.</p>
+<h2><span class="mw-headline" id="Authenticated_encryption">Authenticated encryption</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=12" title="Edit section: Authenticated encryption">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="rellink relarticle mainarticle">Main article: <a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">Authenticated encryption</a></div>
+<p>A number of modes of operation have been designed to combine <a href="http://en.wikipedia.org/wiki/Secrecy" title="Secrecy">secrecy</a> and <a href="http://en.wikipedia.org/wiki/Authentication" title="Authentication">authentication</a> in a single cryptographic primitive. Examples of such modes are <a href="http://en.wikipedia.org/w/index.php?title=XCBC_mode&action=edit&redlink=1" class="new" title="XCBC mode (page does not exist)">XCBC</a>,<sup id="cite_ref-21" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-21"><span>[</span>21<span>]</span></a></sup> <a href="http://en.wikipedia.org/w/index.php?title=IACBC_mode&action=edit&redlink=1" class="new" title="IACBC mode (page does not exist)">IACBC</a>, <a href="http://en.wikipedia.org/wiki/IAPM_mode" title="IAPM mode" class="mw-redirect">IAPM</a>,<sup id="cite_ref-22" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-22"><span>[</span>22<span>]</span></a></sup> <a href="http://en.wikipedia.org/wiki/OCB_mode" title="OCB mode">OCB</a>, <a href="http://en.wikipedia.org/wiki/EAX_mode" title="EAX mode">EAX</a>, <a href="http://en.wikipedia.org/wiki/CWC_mode" title="CWC mode">CWC</a>, <a href="http://en.wikipedia.org/wiki/CCM_mode" title="CCM mode">CCM</a>, and <a href="http://en.wikipedia.org/wiki/Galois/Counter_Mode" title="Galois/Counter Mode">GCM</a>. <a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">Authenticated encryption</a> modes are classified as single pass modes or double pass modes. Unfortunately for the cryptographic user community, many of the single pass <a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">authenticated encryption</a> algorithms (such as <a href="http://en.wikipedia.org/wiki/OCB_mode" title="OCB mode">OCB mode</a>) are patent encumbered.</p>
+<p>In addition, some modes also allow for the authentication of unencrypted associated data, and these are called <a href="http://en.wikipedia.org/wiki/AEAD_block_cipher_modes_of_operation" title="AEAD block cipher modes of operation">AEAD</a> (Authenticated-Encryption with Associated-Data) schemes. For example, EAX mode is a double pass AEAD scheme while OCB mode is single pass.</p>
+<h2><span class="mw-headline" id="Other_modes_and_other_cryptographic_primitives">Other modes and other cryptographic primitives</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=13" title="Edit section: Other modes and other cryptographic primitives">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Many more modes of operation for block ciphers have been suggested. Some have been accepted, fully described (even standardized), and are in use. Others have been found insecure, and should never be used. Still others don't categorize as confidentiality, authenticity, or authenticated encryption - for example <a href="http://en.wikipedia.org/wiki/Key_feedback_mode" title="Key feedback mode">key feedback mode</a> and <a href="http://en.wikipedia.org/wiki/One-way_compression_function#Davies.E2.80.93Meyer" title="One-way compression function">Davies-Meyer</a> hashing.</p>
+<p><a href="http://en.wikipedia.org/wiki/NIST" title="NIST" class="mw-redirect">NIST</a> maintains a list of proposed modes for block ciphers at <a rel="nofollow" class="external text" href="http://csrc.nist.gov/groups/ST/toolkit/BCM/modes_development.html">Modes Development</a>.<sup id="cite_ref-AESBlockDocumentation_14-1" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-AESBlockDocumentation-14"><span>[</span>14<span>]</span></a></sup><sup id="cite_ref-23" class="reference"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_note-23"><span>[</span>23<span>]</span></a></sup></p>
+<p>Disk encryption often uses special purpose modes specifically designed for the application. Tweakable narrow-block encryption modes (<a href="http://en.wikipedia.org/wiki/LRW" title="LRW" class="mw-redirect">LRW</a>, <a href="http://en.wikipedia.org/wiki/Disk_encryption_theory#Xor-encrypt-xor_.28XEX.29" title="Disk encryption theory">XEX</a>, and <a href="http://en.wikipedia.org/wiki/XTS_mode" title="XTS mode" class="mw-redirect">XTS</a>) and wide-block encryption modes (<a href="http://en.wikipedia.org/wiki/Disk_encryption_theory#CBC-mask-CBC_.28CMC.29_and_ECB-mask-ECB_.28EME.29" title="Disk encryption theory">CMC</a> and <a href="http://en.wikipedia.org/wiki/Disk_encryption_theory#CBC-mask-CBC_.28CMC.29_and_ECB-mask-ECB_.28EME.29" title="Disk encryption theory">EME</a>) are designed to securely encrypt sectors of a disk. (See <a href="http://en.wikipedia.org/wiki/Disk_encryption_theory" title="Disk encryption theory">disk encryption theory</a>)</p>
+<p>Block ciphers can also be used in other <a href="http://en.wikipedia.org/wiki/Cryptographic_protocol" title="Cryptographic protocol">cryptographic protocols</a>. They are generally used in modes of operation similar to the block modes described here. As with all protocols, to be cryptographically secure, care must be taken to build them correctly.</p>
+<p>There are several schemes which use a block cipher to build a <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function" title="Cryptographic hash function">cryptographic hash function</a>. See <a href="http://en.wikipedia.org/wiki/One-way_compression_function" title="One-way compression function">one-way compression function</a> for descriptions of several such methods.</p>
+<p><a href="http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" title="Cryptographically secure pseudorandom number generator">Cryptographically secure pseudorandom number generators</a> (CSPRNGs) can also be built using block ciphers.</p>
+<p><a href="http://en.wikipedia.org/wiki/Message_authentication_code" title="Message authentication code">Message authentication codes</a> (MACs) are often built from block ciphers. <a href="http://en.wikipedia.org/wiki/CBC-MAC" title="CBC-MAC">CBC-MAC</a>, <a href="http://en.wikipedia.org/wiki/One-key_MAC" title="One-key MAC">OMAC</a> and <a href="http://en.wikipedia.org/wiki/PMAC_(cryptography)" title="PMAC (cryptography)">PMAC</a> are examples.</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=14" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="multicol" role="presentation" style="border-collapse: collapse; padding: 0; border: 0; background:transparent; width:100%;">
+<tbody><tr>
+<td align="left" valign="top">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Disk_encryption" title="Disk encryption">Disk encryption</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Message_authentication_code" title="Message authentication code">Message authentication code</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">Authenticated encryption</a></li>
+<li><a href="http://en.wikipedia.org/wiki/One-way_compression_function" title="One-way compression function">One-way compression function</a></li>
+</ul>
+</td>
+<td align="left" valign="top">
+<div class="noprint tright portal" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em;">
+<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px;">
+<tbody><tr valign="middle">
+<td style="text-align:center;"><a href="http://en.wikipedia.org/wiki/File:Crypto_key.svg" class="image"><img alt="Portal icon" src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/32px-Crypto_key.svg.png" width="32" height="17" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Crypto_key.svg/48px-Crypto_key.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/65/Crypto_key.svg/64px-Crypto_key.svg.png 2x"></a></td>
+<td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold;"><a href="http://en.wikipedia.org/wiki/Portal:Cryptography" title="Portal:Cryptography">Cryptography portal</a></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+</tbody></table>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit&section=15" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-NIST-BLOCK-CIPHER-MODES-1"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-NIST-BLOCK-CIPHER-MODES_1-0"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation web">NIST Computer Security Division's (CSD) Security Technology Group (STG) (2013). <a rel="nofollow" class="external text" href="http://csrc.nist.gov/groups/ST/toolkit/BCM/index.html">"Block cipher modes"</a>. <i>Cryptographic Toolkit</i>. NIST<span class="reference-accessdate">. Retrieved April 12, 2013</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=Block+cipher+modes&amp;rft.aulast=NIST+Computer+Security+Division%27s+%28CSD%29+Security+Technology+Group+%28STG%29&amp;rft.au=NIST+Computer+Security+Division%27s+%28CSD%29+Security+Technology+Group+%28STG%29&amp;rft.date=2013&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcsrc.nist.gov%2Fgroups%2FST%2Ftoolkit%2FBCM%2Findex.html&amp;rft.jtitle=Cryptographic+Toolkit&amp;rft.pub=NIST&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-FERGUSON-2"><span class="mw-cite-backlink">^ <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-FERGUSON_2-0"><span class="cite-accessibility-label">Jump up to: </span><sup><i><b>a</b></i></sup></a> <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-FERGUSON_2-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><span class="citation book"><i>Cryptography Engineering: Design Principles and Practical Applications</i>. Ferguson, N., Schneier, B. and Kohno, T. Indianapolis: Wiley Publishing, Inc. 2010. pp.&nbsp;63, 64. <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/978-0-470-47424-2" title="Special:BookSources/978-0-470-47424-2">978-0-470-47424-2</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.btitle=Cryptography+Engineering%3A+Design+Principles+and+Practical+Applications&amp;rft.date=2010&amp;rft.genre=book&amp;rft.isbn=978-0-470-47424-2&amp;rft.pages=63%2C+64&amp;rft.place=Indianapolis&amp;rft.pub=Wiley+Publishing%2C+Inc.&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-NIST-PROPOSED-MODES-3"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-NIST-PROPOSED-MODES_3-0"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation web">NIST Computer Security Division's (CSD) Security Technology Group (STG) (2013). <a rel="nofollow" class="external text" href="http://csrc.nist.gov/groups/ST/toolkit/BCM/modes_development.html">"Proposed modes"</a>. <i>Cryptographic Toolkit</i>. NIST<span class="reference-accessdate">. Retrieved April 14, 2013</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=Proposed+modes&amp;rft.aulast=NIST+Computer+Security+Division%27s+%28CSD%29+Security+Technology+Group+%28STG%29&amp;rft.au=NIST+Computer+Security+Division%27s+%28CSD%29+Security+Technology+Group+%28STG%29&amp;rft.date=2013&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcsrc.nist.gov%2Fgroups%2FST%2Ftoolkit%2FBCM%2Fmodes_development.html&amp;rft.jtitle=Cryptographic+Toolkit&amp;rft.pub=NIST&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-HAC-4"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-HAC_4-0"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation book">Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone (1996). <a rel="nofollow" class="external text" href="http://www.cacr.math.uwaterloo.ca/hac/"><i>Handbook of Applied Cryptography</i></a>. CRC Press. pp.&nbsp;228–233. <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/0-8493-8523-7" title="Special:BookSources/0-8493-8523-7">0-8493-8523-7</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.au=Alfred+J.+Menezes%2C+Paul+C.+van+Oorschot+and+Scott+A.+Vanstone&amp;rft.aulast=Alfred+J.+Menezes%2C+Paul+C.+van+Oorschot+and+Scott+A.+Vanstone&amp;rft.btitle=Handbook+of+Applied+Cryptography&amp;rft.date=1996&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.cacr.math.uwaterloo.ca%2Fhac%2F&amp;rft.isbn=0-8493-8523-7&amp;rft.pages=228-233&amp;rft.pub=CRC+Press&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-ISO-10116-5"><span class="mw-cite-backlink">^ <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-ISO-10116_5-0"><span class="cite-accessibility-label">Jump up to: </span><sup><i><b>a</b></i></sup></a> <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-ISO-10116_5-1"><sup><i><b>b</b></i></sup></a> <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-ISO-10116_5-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><span class="citation journal">ISO JTC 1/SC 27 (2006). <a rel="nofollow" class="external text" href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=38761">"ISO/IEC 10116:2006 - Information technology -- Security techniques -- Modes of operation for an n-bit block cipher"</a>. <i>ISO Standards catalogue</i>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=ISO%2FIEC+10116%3A2006+-+Information+technology+--+Security+techniques+--+Modes+of+operation+for+an+n-bit+block+cipher&amp;rft.au=ISO+JTC+1%2FSC+27&amp;rft.aulast=ISO+JTC+1%2FSC+27&amp;rft.date=2006&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fwww.iso.org%2Fiso%2Fiso_catalogue%2Fcatalogue_tc%2Fcatalogue_detail.htm%3Fcsnumber%3D38761&amp;rft.jtitle=ISO+Standards+catalogue&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-HUANG-6"><span class="mw-cite-backlink">^ <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-HUANG_6-0"><span class="cite-accessibility-label">Jump up to: </span><sup><i><b>a</b></i></sup></a> <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-HUANG_6-1"><sup><i><b>b</b></i></sup></a> <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-HUANG_6-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><span class="citation journal">Kuo-Tsang Huang, Jung-Hui Chiu, and Sung-Shiou Shen (January 2013). <a rel="nofollow" class="external text" href="http://airccse.org/journal/ijnsa.html">"A Novel Structure with Dynamic Operation Mode for Symmetric-Key Block Ciphers"</a>. <i>International Journal of Network Security &amp; Its Applications (IJNSA)</i> <b>5</b> (1): 19.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=A+Novel+Structure+with+Dynamic+Operation+Mode+for+Symmetric-Key+Block+Ciphers&amp;rft.au=Kuo-Tsang+Huang%2C+Jung-Hui+Chiu%2C+and+Sung-Shiou+Shen&amp;rft.aulast=Kuo-Tsang+Huang%2C+Jung-Hui+Chiu%2C+and+Sung-Shiou+Shen&amp;rft.date=January+2013&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fairccse.org%2Fjournal%2Fijnsa.html&amp;rft.issue=1&amp;rft.jtitle=International+Journal+of+Network+Security+%26+Its+Applications+%28IJNSA%29&amp;rft.pages=19&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=5" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-NIST-CURRENT-MODES-7"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-NIST-CURRENT-MODES_7-0"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation web">NIST Computer Security Division's (CSD) Security Technology Group (STG) (2013). <a rel="nofollow" class="external text" href="http://csrc.nist.gov/groups/ST/toolkit/BCM/current_modes.html">"Current modes"</a>. <i>Cryptographic Toolkit</i>. NIST<span class="reference-accessdate">. Retrieved April 12, 2013</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=Current+modes&amp;rft.aulast=NIST+Computer+Security+Division%27s+%28CSD%29+Security+Technology+Group+%28STG%29&amp;rft.au=NIST+Computer+Security+Division%27s+%28CSD%29+Security+Technology+Group+%28STG%29&amp;rft.date=2013&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcsrc.nist.gov%2Fgroups%2FST%2Ftoolkit%2FBCM%2Fcurrent_modes.html&amp;rft.jtitle=Cryptographic+Toolkit&amp;rft.pub=NIST&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-8"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://www.cryptosmith.com/archives/70">"Stream Cipher Reuse: A Graphic Example"</a>. Cryptosmith LLC<span class="reference-accessdate">. Retrieved 27 March 2013</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.btitle=Stream+Cipher+Reuse%3A+A+Graphic+Example&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.cryptosmith.com%2Farchives%2F70&amp;rft.pub=Cryptosmith+LLC&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-9"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span id="CITEREFB._Moeller2004" class="citation">B. Moeller (May 20, 2004), <a rel="nofollow" class="external text" href="http://www.openssl.org/~bodo/tls-cbc.txt"><i>Security of CBC Ciphersuites in SSL/TLS: Problems and Countermeasures</i></a></span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.au=B.+Moeller&amp;rft.aulast=B.+Moeller&amp;rft.btitle=Security+of+CBC+Ciphersuites+in+SSL%2FTLS%3A+Problems+and+Countermeasures&amp;rft.date=May+20%2C+2004&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.openssl.org%2F~bodo%2Ftls-cbc.txt&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-10"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">William F. Ehrsam, Carl H. W. Meyer, John L. Smith, Walter L. Tuchman, "Message verification and transmission error detection by block chaining", US Patent 4074066, 1976</span></li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-11"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external free" href="http://www.iks-jena.de/mitarb/lutz/security/cryptfaq/q84.html">http://www.iks-jena.de/mitarb/lutz/security/cryptfaq/q84.html</a></span></li>
+<li id="cite_note-12"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-12"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation book">Kaufman, C.; Perlman, R.; Speciner, M. (2002). <i>Network Security</i> (2nd ed.). Upper Saddle River, NJ: Prentice Hall. p.&nbsp;319. <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/0130460192" title="Special:BookSources/0130460192">0130460192</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.aufirst=C.&amp;rft.au=Kaufman%2C+C.&amp;rft.aulast=Kaufman&amp;rft.au=Perlman%2C+R.&amp;rft.au=Speciner%2C+M.&amp;rft.btitle=Network+Security&amp;rft.date=2002&amp;rft.edition=2nd&amp;rft.genre=book&amp;rft.isbn=0130460192&amp;rft.pages=319&amp;rft.place=Upper+Saddle+River%2C+NJ&amp;rft.pub=Prentice+Hall&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-13"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-13"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation book">Kohl, J. (1990). <a rel="nofollow" class="external text" href="http://dsns.csie.nctu.edu.tw/research/crypto/HTML/PDF/C89/35.PDF">"The Use of Encryption in Kerberos for Network Authentication"</a>. <i>Proceedings, Crypto '89</i>. Berlin: Springer. <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/0387973176" title="Special:BookSources/0387973176">0387973176</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=Proceedings%2C+Crypto+%2789&amp;rft.aufirst=J.&amp;rft.au=Kohl%2C+J.&amp;rft.aulast=Kohl&amp;rft.btitle=The+Use+of+Encryption+in+Kerberos+for+Network+Authentication&amp;rft.date=1990&amp;rft.genre=bookitem&amp;rft_id=http%3A%2F%2Fdsns.csie.nctu.edu.tw%2Fresearch%2Fcrypto%2FHTML%2FPDF%2FC89%2F35.PDF&amp;rft.isbn=0387973176&amp;rft.place=Berlin&amp;rft.pub=Springer&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-AESBlockDocumentation-14"><span class="mw-cite-backlink">^ <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-AESBlockDocumentation_14-0"><span class="cite-accessibility-label">Jump up to: </span><sup><i><b>a</b></i></sup></a> <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-AESBlockDocumentation_14-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">NIST: Recommendation for Block Cipher Modes of Operation</a></span></li>
+<li id="cite_note-15"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-15"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation book">Davies, D. W.; Parkin, G. I. P. (1983). "The average cycle size of the key stream in output feedback encipherment". <i>Advances in Cryptology, Proceedings of CRYPTO 82</i>. New York: Plenum Press. pp.&nbsp;263–282. <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/0306413663" title="Special:BookSources/0306413663">0306413663</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=Advances+in+Cryptology%2C+Proceedings+of+CRYPTO+82&amp;rft.au=Davies%2C+D.+W.&amp;rft.aufirst=D.+W.&amp;rft.aulast=Davies&amp;rft.au=Parkin%2C+G.+I.+P.&amp;rft.btitle=The+average+cycle+size+of+the+key+stream+in+output+feedback+encipherment&amp;rft.date=1983&amp;rft.genre=bookitem&amp;rft.isbn=0306413663&amp;rft.pages=263-282&amp;rft.place=New+York&amp;rft.pub=Plenum+Press&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-16"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-16"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external free" href="http://www.crypto.rub.de/its_seminar_ws0809.html">http://www.crypto.rub.de/its_seminar_ws0809.html</a></span></li>
+<li id="cite_note-17"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-17"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation book">Jueneman, Robert R. (1983). "Analysis of certain aspects of output feedback mode". <i>Advances in Cryptology, Proceedings of CRYPTO 82</i>. New York: Plenum Press. pp.&nbsp;99–127. <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/0306413663" title="Special:BookSources/0306413663">0306413663</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ABlock+cipher+mode+of+operation&amp;rft.atitle=Advances+in+Cryptology%2C+Proceedings+of+CRYPTO+82&amp;rft.aufirst=Robert+R.&amp;rft.au=Jueneman%2C+Robert+R.&amp;rft.aulast=Jueneman&amp;rft.btitle=Analysis+of+certain+aspects+of+output+feedback+mode&amp;rft.date=1983&amp;rft.genre=bookitem&amp;rft.isbn=0306413663&amp;rft.pages=99-127&amp;rft.place=New+York&amp;rft.pub=Plenum+Press&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-18"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-18"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Helger Lipmaa, Phillip Rogaway, and David Wagner. Comments to NIST concerning AES modes of operation: CTR-mode encryption. 2000</span></li>
+<li id="cite_note-19"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-19"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Niels Ferguson, Bruce Schneier, Tadayoshi Kohno, Cryptography Engineering, page 71, 2010</span></li>
+<li id="cite_note-20"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-20"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external free" href="http://www.quadibloc.com/crypto/co040601.htm">http://www.quadibloc.com/crypto/co040601.htm</a></span></li>
+<li id="cite_note-21"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-21"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a href="http://en.wikipedia.org/wiki/Virgil_D._Gligor" title="Virgil D. Gligor">Virgil D. Gligor</a>, Pompiliu Donescu, "Fast Encryption and Authentication: XCBC Encryption and XECB Authentication Modes". Proc. Fast Software Encryption, 2001: 92-108.</span></li>
+<li id="cite_note-22"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-22"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Charanjit S. Jutla, "Encryption Modes with Almost Free Message Integrity", Proc. Eurocrypt 2001, LNCS 2045, May 2001.</span></li>
+<li id="cite_note-23"><span class="mw-cite-backlink"><b><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#cite_ref-23"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://csrc.nist.gov/groups/ST/toolkit/BCM/modes_development.html">NIST: Modes Development</a></span></li>
+</ol>
+</div>
+<table cellspacing="0" class="navbox" style="border-spacing:0;">
+<tbody><tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks navbox-inner" style="border-spacing:0;background:transparent;color:inherit;">
+<tbody><tr>
+<td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tbody><tr>
+<td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tbody><tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="http://en.wikipedia.org/wiki/Template:Cryptography_block" title="Template:Cryptography block"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="http://en.wikipedia.org/wiki/Template_talk:Cryptography_block" title="Template talk:Cryptography block"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="http://en.wikipedia.org/w/index.php?title=Template:Cryptography_block&action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<span style="float:right;width:6em;">&nbsp;</span>
+<div style="font-size:110%;"><a href="http://en.wikipedia.org/wiki/Block_cipher" title="Block cipher">Block ciphers</a> (<a href="http://en.wikipedia.org/wiki/Block_cipher_security_summary" title="Block cipher security summary">security summary</a>)</div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Common<br>
+algorithms</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard" title="Advanced Encryption Standard">AES</a> (<a href="http://en.wikipedia.org/wiki/AES_implementations" title="AES implementations">Implementations</a>)</li>
+<li><a href="http://en.wikipedia.org/wiki/Blowfish_(cipher)" title="Blowfish (cipher)">Blowfish</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Data_Encryption_Standard" title="Data Encryption Standard">DES</a> (<a href="http://en.wikipedia.org/wiki/DES_supplementary_material" title="DES supplementary material">Internal Mechanics</a>, <a href="http://en.wikipedia.org/wiki/Triple_DES" title="Triple DES">Triple DES</a>)</li>
+<li><a href="http://en.wikipedia.org/wiki/Serpent_(cipher)" title="Serpent (cipher)">Serpent</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Twofish" title="Twofish">Twofish</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Less common<br>
+algorithms</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Camellia_(cipher)" title="Camellia (cipher)">Camellia</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CAST-128" title="CAST-128">CAST-128</a></li>
+<li><a href="http://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm" title="International Data Encryption Algorithm">IDEA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RC2" title="RC2">RC2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RC5" title="RC5">RC5</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SEED" title="SEED">SEED</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Skipjack_(cipher)" title="Skipjack (cipher)">Skipjack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm" title="Tiny Encryption Algorithm">TEA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/XTEA" title="XTEA">XTEA</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Other<br>
+algorithms</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/3-Way" title="3-Way">3-Way</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Akelarre_(cipher)" title="Akelarre (cipher)">Akelarre</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Anubis_(cipher)" title="Anubis (cipher)">Anubis</a></li>
+<li><a href="http://en.wikipedia.org/wiki/ARIA_(cipher)" title="ARIA (cipher)">ARIA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/BaseKing" title="BaseKing">BaseKing</a></li>
+<li><a href="http://en.wikipedia.org/wiki/BassOmatic" title="BassOmatic">BassOmatic</a></li>
+<li><a href="http://en.wikipedia.org/wiki/BATON" title="BATON">BATON</a></li>
+<li><a href="http://en.wikipedia.org/wiki/BEAR_and_LION_ciphers" title="BEAR and LION ciphers">BEAR and LION</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CAST-256" title="CAST-256">CAST-256</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Chiasmus_(cipher)" title="Chiasmus (cipher)">Chiasmus</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CIKS-1" title="CIKS-1">CIKS-1</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CIPHERUNICORN-A" title="CIPHERUNICORN-A">CIPHERUNICORN-A</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CIPHERUNICORN-E" title="CIPHERUNICORN-E">CIPHERUNICORN-E</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CLEFIA" title="CLEFIA">CLEFIA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cellular_Message_Encryption_Algorithm" title="Cellular Message Encryption Algorithm">CMEA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cobra_ciphers" title="Cobra ciphers">Cobra</a></li>
+<li><a href="http://en.wikipedia.org/wiki/COCONUT98" title="COCONUT98">COCONUT98</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Crab_(cipher)" title="Crab (cipher)">Crab</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cryptomeria_cipher" title="Cryptomeria cipher">Cryptomeria/C2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CRYPTON" title="CRYPTON">CRYPTON</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CS-Cipher" title="CS-Cipher">CS-Cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/DEAL" title="DEAL">DEAL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/DES-X" title="DES-X">DES-X</a></li>
+<li><a href="http://en.wikipedia.org/wiki/DFC_(cipher)" title="DFC (cipher)">DFC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/E2_(cipher)" title="E2 (cipher)">E2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/FEAL" title="FEAL">FEAL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/FEA-M" title="FEA-M">FEA-M</a></li>
+<li><a href="http://en.wikipedia.org/wiki/FROG" title="FROG">FROG</a></li>
+<li><a href="http://en.wikipedia.org/wiki/GDES" title="GDES">G-DES</a></li>
+<li><a href="http://en.wikipedia.org/wiki/GOST_(block_cipher)" title="GOST (block cipher)">GOST</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Grand_Cru_(cipher)" title="Grand Cru (cipher)">Grand Cru</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hasty_Pudding_cipher" title="Hasty Pudding cipher">Hasty Pudding cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hierocrypt" title="Hierocrypt">Hierocrypt</a></li>
+<li><a href="http://en.wikipedia.org/wiki/ICE_(cipher)" title="ICE (cipher)">ICE</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Idea_NXT" title="Idea NXT">IDEA NXT</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Intel_Cascade_Cipher" title="Intel Cascade Cipher">Intel Cascade Cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Iraqi_block_cipher" title="Iraqi block cipher">Iraqi</a></li>
+<li><a href="http://en.wikipedia.org/wiki/KASUMI" title="KASUMI">KASUMI</a></li>
+<li><a href="http://en.wikipedia.org/wiki/KeeLoq" title="KeeLoq">KeeLoq</a></li>
+<li><a href="http://en.wikipedia.org/wiki/KHAZAD" title="KHAZAD">KHAZAD</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Khufu_and_Khafre" title="Khufu and Khafre">Khufu and Khafre</a></li>
+<li><a href="http://en.wikipedia.org/wiki/KN-Cipher" title="KN-Cipher">KN-Cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Ladder-DES" title="Ladder-DES">Ladder-DES</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Libelle_(cipher)" title="Libelle (cipher)">Libelle</a></li>
+<li>LOKI (<a href="http://en.wikipedia.org/wiki/LOKI97" title="LOKI97">97</a>, <a href="http://en.wikipedia.org/wiki/LOKI" title="LOKI">89/91</a>)</li>
+<li><a href="http://en.wikipedia.org/wiki/Lucifer_(cipher)" title="Lucifer (cipher)">Lucifer</a></li>
+<li><a href="http://en.wikipedia.org/wiki/M6_(cipher)" title="M6 (cipher)">M6</a></li>
+<li><a href="http://en.wikipedia.org/wiki/M8_(cipher)" title="M8 (cipher)">M8</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MacGuffin_(cipher)" title="MacGuffin (cipher)">MacGuffin</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Madryga" title="Madryga">Madryga</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MAGENTA" title="MAGENTA">MAGENTA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MARS_(cryptography)" title="MARS (cryptography)">MARS</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Mercy_(cipher)" title="Mercy (cipher)">Mercy</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MESH_(cipher)" title="MESH (cipher)">MESH</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MISTY1" title="MISTY1">MISTY1</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MMB" title="MMB">MMB</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MULTI2" title="MULTI2">MULTI2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MultiSwap" title="MultiSwap">MultiSwap</a></li>
+<li><a href="http://en.wikipedia.org/wiki/New_Data_Seal" title="New Data Seal">New Data Seal</a></li>
+<li><a href="http://en.wikipedia.org/wiki/NewDES" title="NewDES">NewDES</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Nimbus_(cipher)" title="Nimbus (cipher)">Nimbus</a></li>
+<li><a href="http://en.wikipedia.org/wiki/NOEKEON" title="NOEKEON">NOEKEON</a></li>
+<li><a href="http://en.wikipedia.org/wiki/NUSH" title="NUSH">NUSH</a></li>
+<li><a href="http://en.wikipedia.org/wiki/PRESENT_(cipher)" title="PRESENT (cipher)">PRESENT</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Q_(cipher)" title="Q (cipher)">Q</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RC6" title="RC6">RC6</a></li>
+<li><a href="http://en.wikipedia.org/wiki/REDOC" title="REDOC">REDOC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Red_Pike_(cipher)" title="Red Pike (cipher)">Red Pike</a></li>
+<li><a href="http://en.wikipedia.org/wiki/S-1_block_cipher" title="S-1 block cipher">S-1</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SAFER" title="SAFER">SAFER</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SAVILLE" title="SAVILLE">SAVILLE</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SC2000" title="SC2000">SC2000</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SHACAL" title="SHACAL">SHACAL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SHARK" title="SHARK">SHARK</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Simon_(cipher)" title="Simon (cipher)">Simon</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SMS4" title="SMS4">SMS4</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Speck_(cipher)" title="Speck (cipher)">Speck</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Spectr-H64" title="Spectr-H64">Spectr-H64</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Square_(cipher)" title="Square (cipher)">Square</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SXAL/MBAL" title="SXAL/MBAL">SXAL/MBAL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Threefish" title="Threefish">Threefish</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Treyfer" title="Treyfer">Treyfer</a></li>
+<li><a href="http://en.wikipedia.org/wiki/UES_(cipher)" title="UES (cipher)">UES</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Xenon_(cipher)" title="Xenon (cipher)">Xenon</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Xmx" title="Xmx">xmx</a></li>
+<li><a href="http://en.wikipedia.org/wiki/XXTEA" title="XXTEA">XXTEA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Zodiac_(cipher)" title="Zodiac (cipher)">Zodiac</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Design</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Feistel_cipher" title="Feistel cipher">Feistel network</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Key_schedule" title="Key schedule">Key schedule</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Lai-Massey_scheme" title="Lai-Massey scheme">Lai-Massey scheme</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Product_cipher" title="Product cipher">Product cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/S-box" title="S-box">S-box</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Permutation_box" title="Permutation box">P-box</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Substitution-permutation_network" title="Substitution-permutation network">SPN</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Avalanche_effect" title="Avalanche effect">Avalanche effect</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Block_size_(cryptography)" title="Block size (cryptography)">Block size</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Key_size" title="Key size">Key size</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Key_whitening" title="Key whitening">Key whitening</a> (<a href="http://en.wikipedia.org/wiki/Whitening_transformation" title="Whitening transformation">Whitening transformation</a>)</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Attack<br>
+(<a href="http://en.wikipedia.org/wiki/Cryptanalysis" title="Cryptanalysis">cryptanalysis</a>)</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Brute-force_attack" title="Brute-force attack">Brute-force</a> (<a href="http://en.wikipedia.org/wiki/EFF_DES_cracker" title="EFF DES cracker">EFF DES cracker</a>)</li>
+<li><a href="http://en.wikipedia.org/wiki/Meet-in-the-middle_attack" title="Meet-in-the-middle attack">MITM</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Linear_cryptanalysis" title="Linear cryptanalysis">Linear</a> (<a href="http://en.wikipedia.org/wiki/Piling-up_lemma" title="Piling-up lemma">Piling-up lemma</a>)</li>
+<li><a href="http://en.wikipedia.org/wiki/Differential_cryptanalysis" title="Differential cryptanalysis">Differential</a> (<a href="http://en.wikipedia.org/wiki/Impossible_differential_cryptanalysis" title="Impossible differential cryptanalysis">Impossible</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Truncated_differential_cryptanalysis" title="Truncated differential cryptanalysis">Truncated</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Higher-order_differential_cryptanalysis" title="Higher-order differential cryptanalysis">Higher-order</a>)</li>
+<li><a href="http://en.wikipedia.org/wiki/Differential-linear_attack" title="Differential-linear attack">Differential-linear</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Integral_cryptanalysis" title="Integral cryptanalysis">Integral</a> (aka Square)</li>
+<li><a href="http://en.wikipedia.org/wiki/Boomerang_attack" title="Boomerang attack">Boomerang</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Mod_n_cryptanalysis" title="Mod n cryptanalysis">Mod <i>n</i></a></li>
+<li><a href="http://en.wikipedia.org/wiki/Related-key_attack" title="Related-key attack">Related-key</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Slide_attack" title="Slide attack">Slide</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Rotational_cryptanalysis" title="Rotational cryptanalysis">Rotational</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Timing_attack" title="Timing attack">Timing</a></li>
+<li><a href="http://en.wikipedia.org/wiki/XSL_attack" title="XSL attack">XSL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Interpolation_attack" title="Interpolation attack">Interpolation</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Partitioning_cryptanalysis" title="Partitioning cryptanalysis">Partitioning</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Davies%27_attack" title="Davies&#39; attack">Davies'</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Rebound_attack" title="Rebound attack">Rebound</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Biclique_attack" title="Biclique attack">Biclique</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Weak_key" title="Weak key">Weak key</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Standardization</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard_process" title="Advanced Encryption Standard process">AES process</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CRYPTREC" title="CRYPTREC">CRYPTREC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/NESSIE" title="NESSIE">NESSIE</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Utilization</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Initialization_vector" title="Initialization vector">Initialization vector</a></li>
+<li><strong class="selflink">Mode of operation</strong></li>
+<li><a href="http://en.wikipedia.org/wiki/Padding_(cryptography)" title="Padding (cryptography)">Padding</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tbody><tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="http://en.wikipedia.org/wiki/Template:Cryptography_hash" title="Template:Cryptography hash"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="http://en.wikipedia.org/wiki/Template_talk:Cryptography_hash" title="Template talk:Cryptography hash"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="http://en.wikipedia.org/w/index.php?title=Template:Cryptography_hash&action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<span style="float:right;width:6em;">&nbsp;</span>
+<div style="font-size:110%;"><a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function" title="Cryptographic hash function">Cryptographic hash functions</a> and <a href="http://en.wikipedia.org/wiki/Message_authentication_code" title="Message authentication code">message authentication codes (MACs)</a> (<a href="http://en.wikipedia.org/wiki/Hash_function_security_summary" title="Hash function security summary">Security summary</a>)</div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Common functions</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/MD5" title="MD5">MD5</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SHA-1" title="SHA-1">SHA-1</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SHA-2" title="SHA-2">SHA-2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SHA-3" title="SHA-3">SHA-3/Keccak</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/NIST_hash_function_competition" title="NIST hash function competition">SHA-3 finalists</a></th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/BLAKE_(hash_function)" title="BLAKE (hash function)">BLAKE</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Gr%C3%B8stl" title="Grøstl">Grøstl</a></li>
+<li><a href="http://en.wikipedia.org/wiki/JH_(hash_function)" title="JH (hash function)">JH</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Skein_(hash_function)" title="Skein (hash function)">Skein</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SHA-3" title="SHA-3">Keccak (winner)</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Other functions</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Fast_Syndrome_Based_Hash" title="Fast Syndrome Based Hash">FSB</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Elliptic_curve_only_hash" title="Elliptic curve only hash">ECOH</a></li>
+<li><a href="http://en.wikipedia.org/wiki/GOST_(hash_function)" title="GOST (hash function)">GOST</a></li>
+<li><a href="http://en.wikipedia.org/wiki/HAS-160" title="HAS-160">HAS-160</a></li>
+<li><a href="http://en.wikipedia.org/wiki/HAVAL" title="HAVAL">HAVAL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/LM_hash" title="LM hash">LM hash</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MDC-2" title="MDC-2">MDC-2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MD2_(cryptography)" title="MD2 (cryptography)">MD2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MD4" title="MD4">MD4</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MD6" title="MD6">MD6</a></li>
+<li><a href="http://en.wikipedia.org/wiki/N-Hash" title="N-Hash">N-Hash</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RadioGat%C3%BAn" title="RadioGatún">RadioGatún</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RIPEMD" title="RIPEMD">RIPEMD</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RTR0" title="RTR0">RTR0</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SipHash" title="SipHash">SipHash</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Snefru" title="Snefru">Snefru</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SWIFFT" title="SWIFFT">SWIFFT</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Tiger_(cryptography)" title="Tiger (cryptography)">Tiger</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Very_smooth_hash" title="Very smooth hash">VSH</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Whirlpool_(cryptography)" title="Whirlpool (cryptography)">WHIRLPOOL</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Crypt_(C)" title="Crypt (C)">crypt(3)</a> (DES)</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">MAC algorithms</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Data_Authentication_Algorithm" title="Data Authentication Algorithm">DAA</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CBC-MAC" title="CBC-MAC">CBC-MAC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/HMAC" title="HMAC" class="mw-redirect">HMAC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/One-key_MAC" title="One-key MAC">OMAC</a>/<a href="http://en.wikipedia.org/wiki/CMAC" title="CMAC">CMAC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/PMAC_(cryptography)" title="PMAC (cryptography)">PMAC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/VMAC" title="VMAC">VMAC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/UMAC" title="UMAC">UMAC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Poly1305-AES" title="Poly1305-AES">Poly1305-AES</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/Authenticated_encryption" title="Authenticated encryption">Authenticated<br>
+encryption</a> modes</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/CCM_mode" title="CCM mode">CCM</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CWC_mode" title="CWC mode">CWC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/EAX_mode" title="EAX mode">EAX</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Galois/Counter_Mode" title="Galois/Counter Mode">GCM</a></li>
+<li><a href="http://en.wikipedia.org/wiki/IAPM_(mode)" title="IAPM (mode)">IAPM</a></li>
+<li><a href="http://en.wikipedia.org/wiki/OCB_mode" title="OCB mode">OCB</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Attacks</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Collision_attack" title="Collision attack">Collision attack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Preimage_attack" title="Preimage attack">Preimage attack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Birthday_attack" title="Birthday attack">Birthday attack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Brute_force_attack" title="Brute force attack" class="mw-redirect">Brute force attack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Rainbow_table" title="Rainbow table">Rainbow table</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Distinguishing_attack" title="Distinguishing attack">Distinguishing attack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Side-channel_attack" title="Side-channel attack" class="mw-redirect">Side-channel attack</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Length_extension_attack" title="Length extension attack">Length extension attack</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Design</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Avalanche_effect" title="Avalanche effect">Avalanche effect</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Collision_(computer_science)" title="Collision (computer science)">Hash collision</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction" title="Merkle–Damgård construction">Merkle–Damgård construction</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Standardization</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/CRYPTREC" title="CRYPTREC">CRYPTREC</a></li>
+<li><a href="http://en.wikipedia.org/wiki/NESSIE" title="NESSIE">NESSIE</a></li>
+<li><a href="http://en.wikipedia.org/wiki/NIST_hash_function_competition" title="NIST hash function competition">NIST hash function competition</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Utilization</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Salt_(cryptography)" title="Salt (cryptography)">Salt</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tbody><tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="http://en.wikipedia.org/wiki/Template:Cryptography_navbox" title="Template:Cryptography navbox"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="http://en.wikipedia.org/wiki/Template_talk:Cryptography_navbox" title="Template talk:Cryptography navbox"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="http://en.wikipedia.org/w/index.php?title=Template:Cryptography_navbox&action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<span style="float:right;width:6em;">&nbsp;</span>
+<div style="font-size:110%;"><a href="http://en.wikipedia.org/wiki/Cryptography" title="Cryptography">Cryptography</a></div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/History_of_cryptography" title="History of cryptography">History of cryptography</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cryptanalysis" title="Cryptanalysis">Cryptanalysis</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Portal:Cryptography" title="Portal:Cryptography">Cryptography portal</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Outline_of_cryptography" title="Outline of cryptography">Outline of cryptography</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Symmetric-key_algorithm" title="Symmetric-key algorithm">Symmetric-key algorithm</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Block_cipher" title="Block cipher">Block cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Stream_cipher" title="Stream cipher">Stream cipher</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Public-key_cryptography" title="Public-key cryptography">Public-key cryptography</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function" title="Cryptographic hash function">Cryptographic hash function</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Message_authentication_code" title="Message authentication code">Message authentication code</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" title="Cryptographically secure pseudorandom number generator">Random numbers</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Steganography" title="Steganography">Steganography</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1039
+CPU time usage: 0.984 seconds
+Real time usage: 1.352 seconds
+Preprocessor visited node count: 2333/1000000
+Preprocessor generated node count: 13678/1500000
+Post‐expand include size: 161894/2048000 bytes
+Template argument size: 2012/2048000 bytes
+Highest expansion depth: 16/40
+Expensive parser function count: 6/500
+Lua time usage: 0.132/10.000 seconds
+Lua memory usage: 3.19 MB/50 MB
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:160202-0!*!0!!en!4!*!math=0 and timestamp 20140405183026
+ -->
+<noscript>&lt;img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /&gt;</noscript></div>								<div class="printfooter">
+				Retrieved from "<a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=599466680">http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&amp;oldid=599466680</a>"				</div>
+												<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://en.wikipedia.org/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="http://en.wikipedia.org/wiki/Category:Block_cipher_modes_of_operation" title="Category:Block cipher modes of operation">Block cipher modes of operation</a></li><li><a href="http://en.wikipedia.org/wiki/Category:Cryptographic_algorithms" title="Category:Cryptographic algorithms">Cryptographic algorithms</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+				<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+	<h3 id="p-personal-label">Personal tools</h3>
+	<ul>
+<li id="pt-createaccount"><a href="http://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Block+cipher+mode+of+operation&type=signup">Create account</a></li><li id="pt-login"><a href="http://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Block+cipher+mode+of+operation" title="You&#39;re encouraged to log in; however, it&#39;s not mandatory. [alt-shift-o]" accesskey="o">Log in</a></li>	</ul>
+</div>
+				<div id="left-navigation">
+					<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+	<h3 id="p-namespaces-label">Namespaces</h3>
+	<ul>
+					<li id="ca-nstab-main" class="selected"><span><a href="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/Block cipher mode of operation - Wikipedia, the free encyclopedia.htm" title="View the content page [alt-shift-c]" accesskey="c">Article</a></span></li>
+					<li id="ca-talk"><span><a href="http://en.wikipedia.org/wiki/Talk:Block_cipher_mode_of_operation" title="Discussion about the content page [alt-shift-t]" accesskey="t">Talk</a></span></li>
+			</ul>
+</div>
+<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+	<h3 id="mw-vector-current-variant">
+		</h3>
+	<h3 id="p-variants-label" tabindex="0"><span>Variants</span><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" tabindex="-1"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+				</div>
+				<div id="right-navigation">
+					<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+	<h3 id="p-views-label">Views</h3>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/Block cipher mode of operation - Wikipedia, the free encyclopedia.htm">Read</a></span></li>
+					<li id="ca-edit"><span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=edit" title="You can edit this page. 
+Please review your changes before saving. [alt-shift-e]" accesskey="e">Edit</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=history" title="Past versions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+	<h3 id="p-cactions-label" tabindex="0"><span>Actions</span><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" tabindex="-1"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+<div id="p-search" role="search">
+	<h3><label for="searchInput">Search</label></h3>
+	<form action="http://en.wikipedia.org/w/index.php" id="searchform">
+					<div id="simpleSearch">
+					<input type="search" name="search" placeholder="Search" title="Search Wikipedia [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if one exists" id="searchButton" class="searchButton">		</div>
+	</form>
+</div>
+				</div>
+			</div>
+			<div id="mw-panel" class="collapsible-nav">
+					<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page"></a></div>
+				<div class="portal first persistent" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+	<h3 id="p-navigation-label">Navigation</h3>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li>
+			<li id="n-contents"><a href="http://en.wikipedia.org/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+			<li id="n-featuredcontent"><a href="http://en.wikipedia.org/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+			<li id="n-currentevents"><a href="http://en.wikipedia.org/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-randompage"><a href="http://en.wikipedia.org/wiki/Special:Random" title="Load a random article [alt-shift-x]" accesskey="x">Random article</a></li>
+			<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&utm_medium=sidebar&utm_campaign=C13_en.wikipedia.org&uselang=en" title="Support us">Donate to Wikipedia</a></li>
+			<li id="n-shoplink"><a href="http://shop.wikimedia.org/" title="Visit the Wikimedia Shop">Wikimedia Shop</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal expanded" role="navigation" id="p-interaction" aria-labelledby="p-interaction-label">
+	<h3 id="p-interaction-label" tabindex="2"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" aria-haspopup="true" aria-controls="p-interaction-list" role="button" aria-pressed="true" aria-expanded="true">Interaction</a></h3>
+	<div class="body" style="display: block;">
+		<ul id="p-interaction-list">
+			<li id="n-help"><a href="http://en.wikipedia.org/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+			<li id="n-aboutsite"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+			<li id="n-portal"><a href="http://en.wikipedia.org/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-recentchanges"><a href="http://en.wikipedia.org/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+			<li id="n-contactpage"><a href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal collapsed" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+	<h3 id="p-tb-label" tabindex="3"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" aria-haspopup="true" aria-controls="p-tb-list" role="button" aria-pressed="false" aria-expanded="false">Tools</a></h3>
+	<div class="body">
+		<ul id="p-tb-list">
+			<li id="t-whatlinkshere"><a href="http://en.wikipedia.org/wiki/Special:WhatLinksHere/Block_cipher_mode_of_operation" title="List of all English Wikipedia pages containing links to this page [alt-shift-j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="http://en.wikipedia.org/wiki/Special:RecentChangesLinked/Block_cipher_mode_of_operation" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+			<li id="t-upload"><a href="http://en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [alt-shift-u]" accesskey="u">Upload file</a></li>
+			<li id="t-specialpages"><a href="http://en.wikipedia.org/wiki/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+			<li id="t-permalink"><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=599466680" title="Permanent link to this revision of the page">Permanent link</a></li>
+			<li id="t-info"><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&action=info">Page information</a></li>
+			<li id="t-wikibase"><a href="http://www.wikidata.org/wiki/Q154021" title="Link to connected data repository item [alt-shift-g]" accesskey="g">Data item</a></li>
+<li id="t-cite"><a href="http://en.wikipedia.org/w/index.php?title=Special:Cite&page=Block_cipher_mode_of_operation&id=599466680" title="Information on how to cite this page">Cite this page</a></li>		</ul>
+	</div>
+</div>
+<div class="portal collapsed" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+	<h3 id="p-coll-print_export-label" tabindex="4"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" aria-haspopup="true" aria-controls="p-coll-print_export-list" role="button" aria-pressed="false" aria-expanded="false">Print/export</a></h3>
+	<div class="body">
+		<ul id="p-coll-print_export-list">
+			<li id="coll-create_a_book"><a href="http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=book_creator&referer=Block+cipher+mode+of+operation">Create a book</a></li>
+			<li id="coll-download-as-rl"><a href="http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=render_article&arttitle=Block+cipher+mode+of+operation&oldid=599466680&writer=rl">Download as PDF</a></li>
+			<li id="t-print"><a href="http://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&printable=yes" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal expanded" role="navigation" id="p-lang" aria-labelledby="p-lang-label"><span class="uls-settings-trigger" tabindex="0" role="button" aria-haspopup="true" original-title="Language settings"></span>
+	<h3 id="p-lang-label" tabindex="5"><a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#" aria-haspopup="true" aria-controls="p-lang-list" role="button" aria-pressed="true" aria-expanded="true">Languages</a></h3>
+	<div class="body" style="display: block;">
+		<ul id="p-lang-list">
+			<li class="interlanguage-link interwiki-de"><a href="http://de.wikipedia.org/wiki/Betriebsmodus_(Kryptographie)" title="Betriebsmodus (Kryptographie) – German" lang="de" hreflang="de">Deutsch</a></li>
+			<li class="interlanguage-link interwiki-es"><a href="http://es.wikipedia.org/wiki/Modos_de_operaci%C3%B3n_de_una_unidad_de_cifrado_por_bloques" title="Modos de operación de una unidad de cifrado por bloques – Spanish" lang="es" hreflang="es">Español</a></li>
+			<li class="interlanguage-link interwiki-fa"><a href="http://fa.wikipedia.org/wiki/%D9%85%D8%AF%D9%87%D8%A7%DB%8C_%DA%A9%D8%A7%D8%B1%DB%8C_%D8%B1%D9%85%D8%B2%D9%87%D8%A7%DB%8C_%D9%82%D8%B7%D8%B9%D9%87%E2%80%8C%D8%A7%DB%8C" title="مدهای کاری رمزهای قطعه‌ای – Persian" lang="fa" hreflang="fa">فارسی</a></li>
+			<li class="interlanguage-link interwiki-fr"><a href="http://fr.wikipedia.org/wiki/Mode_d%27op%C3%A9ration_(cryptographie)" title="Mode d&#39;opération (cryptographie) – French" lang="fr" hreflang="fr">Français</a></li>
+			<li class="interlanguage-link interwiki-ko"><a href="http://ko.wikipedia.org/wiki/%EB%B8%94%EB%A1%9D_%EC%95%94%ED%98%B8_%EC%9A%B4%EC%9A%A9_%EB%B0%A9%EC%8B%9D" title="블록 암호 운용 방식 – Korean" lang="ko" hreflang="ko">한국어</a></li>
+			<li class="interlanguage-link interwiki-it"><a href="http://it.wikipedia.org/wiki/Modalit%C3%A0_di_funzionamento_dei_cifrari_a_blocchi" title="Modalità di funzionamento dei cifrari a blocchi – Italian" lang="it" hreflang="it">Italiano</a></li>
+			<li class="interlanguage-link interwiki-ja"><a href="http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89" title="暗号利用モード – Japanese" lang="ja" hreflang="ja">日本語</a></li>
+			<li class="interlanguage-link interwiki-pl"><a href="http://pl.wikipedia.org/wiki/Tryb_wi%C4%85zania_blok%C3%B3w_zaszyfrowanych" title="Tryb wiązania bloków zaszyfrowanych – Polish" lang="pl" hreflang="pl">Polski</a></li>
+			<li class="interlanguage-link interwiki-pt"><a href="http://pt.wikipedia.org/wiki/Modo_de_opera%C3%A7%C3%A3o_(criptografia)" title="Modo de operação (criptografia) – Portuguese" lang="pt" hreflang="pt">Português</a></li>
+			<li class="interlanguage-link interwiki-ru"><a href="http://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC_%D1%88%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F" title="Режим шифрования – Russian" lang="ru" hreflang="ru">Русский</a></li>
+			<li class="interlanguage-link interwiki-tr"><a href="http://tr.wikipedia.org/wiki/Blok_%C5%9Fifre_%C3%A7al%C4%B1%C5%9Fma_kipleri" title="Blok şifre çalışma kipleri – Turkish" lang="tr" hreflang="tr">Türkçe</a></li>
+			<li class="interlanguage-link interwiki-uk"><a href="http://uk.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC%D0%B8_%D0%B1%D0%BB%D0%BE%D1%87%D0%BD%D0%BE%D0%B3%D0%BE_%D1%88%D0%B8%D1%84%D1%80%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F" title="Режими блочного шифрування – Ukrainian" lang="uk" hreflang="uk">Українська</a></li>
+			<li class="interlanguage-link interwiki-zh"><a href="http://zh.wikipedia.org/wiki/%E5%9D%97%E5%AF%86%E7%A0%81%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F" title="块密码的工作模式 – Chinese" lang="zh" hreflang="zh">中文</a></li>
+			
+			<li class="wbc-editpage"><a href="http://www.wikidata.org/wiki/Q154021#sitelinks-wikipedia" title="Edit interlanguage links">Edit links</a></li>
+		</ul>
+	</div>
+</div>
+			</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 13 March 2014 at 18:16.<br></li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="http://wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy.</a> <br>
+Wikipedia® is a registered trademark of the <a href="http://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="http://en.wikipedia.org/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a class="external" href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="http://en.m.wikipedia.org/wiki/Block_cipher_mode_of_operation" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://wikimediafoundation.org/"><img src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.cite","mobile.desktop","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","mw.MwEmbedSupport.style","mmv.bootstrap.autostart","ext.eventLogging.subscriber","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","ext.uls.interlanguage","skins.vector.collapsibleNav"],null,true);
+}</script>
+<script src="./Block cipher mode of operation - Wikipedia, the free encyclopedia_files/load(2).php"></script>
+<!-- Served by mw1045 in 0.216 secs. -->
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div><script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>
