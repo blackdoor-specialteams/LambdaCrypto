@@ -8,5 +8,5 @@ public interface BlockCipherModeEncryption extends BlockCipherMode {
 	 * @param IV
 	 * @return a 2-tuple in the form (ciphertext, next) where next is the IV for the next block.
 	 */
-	public TwoTuple<byte[], byte[]> cryptBlock(byte[] key, byte[] plaintext, byte[] IV);
+	public TwoTuple<byte[], byte[]> cryptBlock(EncryptionAlgorithm algo, byte[] key, byte[] plaintext, byte[] IV);
 }

@@ -8,6 +8,6 @@ public interface BlockCipherMode {
 	 * @param IV
 	 * @return a 2-tuple in the form (outputtext, next) where next is the IV for the next block.
 	 */
-	public TwoTuple<byte[], byte[]> cryptBlock(byte[] key, byte[] inputtext, byte[] IV);
+	public abstract TwoTuple<byte[], byte[]> cryptBlock(CipherAlgorithm algo, byte[] key, byte[] inputtext, byte[] IV);
 	
 }
