@@ -1,17 +1,19 @@
 package lambdaCrypto;
 
+import java.security.SecureRandom;
+
 public  class Crypto {
 	
 	public enum OpMode{
 		ENCRYPT, DECRYPT
 	}
-	
+	public static final int BLOCKSIZE = 32;
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
+	private OpMode opMode;
 	
-	public Crypto(CipherAlgorithm algo, BlockCipherMode mode){
-		this.algo = algo;
-		this.mode = mode;
+	public Crypto(OpMode opMode){
+		this.opMode = opMode;
 	}
 	
 	/**
@@ -44,8 +46,11 @@ public  class Crypto {
 	 * @param key A key to encrypt with.
 	 * @return An IV that has been created for this cipher to use.
 	 */
-	public byte[] init(OpMode opMode, byte[] key){
-		
+	public byte[] init(CipherAlgorithm algo, BlockCipherMode mode, byte[] key){
+		byte[] iv = new byte[BLOCKSIZE];
+		new SecureRandom().nextBytes(iv);
+		init(algo, mode, iv, key);
+		return iv;
 	}
 	
 	/**
@@ -54,8 +59,16 @@ public  class Crypto {
 	 * @param IV An initialization vector to use for the cipher.
 	 * @param key A key to encrypt with.
 	 */
-	public void init(OpMode opMode, byte[] IV, byte[] key){
-		
+	public void init(CipherAlgorithm algo, BlockCipherMode mode, byte[] IV, byte[] key){
+		if(opMode == OpMode.ENCRYPT){
+			if(!(algo instanceof EncryptionAlgorithm && mode instanceof BlockCipherModeEncryption ))
+				throw new RuntimeException("CipherAlgorithm and/or BlockCipher Modes are not Encryption Algorithms and/or Modes");
+		}else{
+			if(!(algo instanceof DecryptionAlgorithm && mode instanceof BlockCipherModeDecryption ))
+			throw new RuntimeException("CipherAlgorithm and/or BlockCipher Modes are not Decryption Algorithms and/or Modes");
+		}
+		this.algo = algo;
+		this.mode = mode;
 	}
 	
 	

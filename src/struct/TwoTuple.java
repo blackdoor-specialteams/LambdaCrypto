@@ -1,4 +1,4 @@
-package lambdaCrypto;
+package struct;
 
 public class TwoTuple<T1, T2> {
 	private T1 t1;

@@ -1,5 +1,7 @@
 package lambdaCrypto;
 
+import struct.TwoTuple;
+
 public interface BlockCipherModeEncryption extends BlockCipherMode {
 	/**
 	 * Encrypt a block using this block cipher mode.
