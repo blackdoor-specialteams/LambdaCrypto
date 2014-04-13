@@ -1,0 +1,23 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////
+					~~~~ Help Menu ~~~~							
+Commands
+------------------------------------------------------
+
+	[-e] - Encryption Command
+		Description:
+		
+		Uses:
+			-e cipher infile outfile 
+			-e cipher infile 
+			-e cipher
+	
+	[-d] - Decryption Command
+		Description:
+		
+		Uses:
+			-d cipher infile outfile 
+			-d cipher infile 
+			-d cipher
+		
+Available Ciphers
+------------------------------------------------------
