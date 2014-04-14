@@ -11,6 +11,6 @@ public interface BlockCipherModeDecryption extends BlockCipherMode {
 	 * @param IV
 	 * @return a 2-tuple in the form (plaintext, next) where next is the IV for the next block.
 	 */
-	public TwoTuple<byte[], byte[]> cryptBlock(DecryptionAlgorithm algo, byte[] key, byte[] plaintext, byte[] IV);
+	public TwoTuple<byte[], byte[]> cryptBlock(CipherAlgorithm algo, byte[] key, byte[] plaintext, byte[] IV);
 
 }

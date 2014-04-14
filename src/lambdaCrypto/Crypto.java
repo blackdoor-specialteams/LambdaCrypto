@@ -1,6 +1,11 @@
 package lambdaCrypto;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+
+import struct.TwoTuple;
+import util.Misc;
 
 public  class Crypto {
 	
@@ -11,6 +16,24 @@ public  class Crypto {
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
 	private OpMode opMode;
+	
+	
+	public static void main(String[] args){
+		/**
+		 * |example of how crypto might be used
+		 */
+		byte[] IV = new byte[32];
+		byte[] key = new byte [32];
+		byte[] plaintext = new byte[100];
+		
+		Crypto crypto = new Crypto(OpMode.ENCRYPT);
+		EncryptionAlgorithm eAlgo = (byte[] keyy, byte[] plainText) -> Ciphers.SHECrypt(keyy, plainText);
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);
+		crypto.init(eAlgo, eMode, IV, key);
+		byte[] ciphertext = crypto.update(plaintext);
+		byte[] pad = crypto.doFinal();
+	}
+	
 	
 	public Crypto(OpMode opMode){
 		this.opMode = opMode;
