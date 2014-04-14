@@ -2,7 +2,17 @@
 					~~~~ Help Menu ~~~~							
 Commands
 ------------------------------------------------------
-
+DEFAULT RUN CONFIGURATIONS:
+	Actions performed:
+		-Encrytion on infile
+		-Ciphertext printed to first outfile
+		-Decrption printed to second outfile 
+	Default:
+		infile - in.txt
+		ciphertext - out1.txt
+		plaintext - out2.txt
+		
+Available Control Parameters:
 	[-e] - Encryption Command
 		Description:
 		
@@ -18,6 +28,6 @@ Commands
 			-d cipher infile outfile 
 			-d cipher infile 
 			-d cipher
-		
+				
 Available Ciphers
 ------------------------------------------------------
