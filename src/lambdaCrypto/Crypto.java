@@ -38,7 +38,8 @@ public  class Crypto {
 		System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 	}
 	
-	
+	public Crypto(){
+	}
 	public Crypto(OpMode opMode){
 		this.opMode = opMode;
 	}
@@ -123,6 +124,9 @@ public  class Crypto {
 	 */
 	public BlockCipherMode getMode() {
 		return mode;
+	}
+	public void setOpMode(OpMode a) {
+		this.opMode = a;
 	}
 }
 

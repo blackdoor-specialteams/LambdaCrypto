@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import lambdaCrypto.Crypto.OpMode;
 import testpack.*;
+import util.Misc;
 
 public class Test {
 
@@ -14,10 +16,10 @@ public class Test {
 		if (args.length > 0) {
 			// HELP CMD
 			if (args[0].equals("-help")) {
-				tester.printOut("/testpack/help.txt");
+				tester.printOut("./src/testpack/help.txt");
 				System.exit(0);
 			} else if (args[0].equals("-about")) {
-				tester.printOut("/testpack/about.txt");
+				tester.printOut("./src/testpack/about.txt");
 				System.exit(0);
 			} else if (args[0].equals("-d")) { // DECRYPT CMD
 				tester.setMode(RunMode.DECRYPT);
@@ -62,6 +64,10 @@ public class Test {
 	private String cipher = "default cipher";
 	// TODO
 	private String blockmode = "default blockmode";
+	private final int BLOCKSIZE = 32;
+	private byte[] IV = new byte[BLOCKSIZE];
+	private byte[] key = new byte[BLOCKSIZE];
+	private byte[] plaintext = new byte[100];
 
 	// TODO
 
@@ -77,11 +83,26 @@ public class Test {
 	private void Run(String[] args) {
 		if (args != null) {
 			setFiles(args);
+			Crypto crypto = new Crypto();
 			if (runmode == RunMode.ENCRYPT) {
-				// TODO
-			} else if (runmode == RunMode.ENCRYPT) {
-				// TODO
+				crypto.setOpMode(OpMode.ENCRYPT);
+				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; 
+				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
+						byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
+						.OFB(algo, keyyy, plainText, iV);
+				crypto.init(eAlgo, eMode, IV, key);
+			} else if (runmode == RunMode.DECRYPT) {
+				crypto.setOpMode(OpMode.DECRYPT);
+				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt;
+				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
+						byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
+						.OFB(algo, keyyy, plainText, iV);
+				crypto.init(eAlgo, eMode, IV, key);
 			}
+			byte[] ciphertext = crypto.update(plaintext);
+			byte[] pad = crypto.doFinal();
+			System.out.println(Misc.bytesToHex(plaintext));
+			System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 		} else {
 
 		}
@@ -102,7 +123,7 @@ public class Test {
 			} else if (args.length == 3) {
 				cipher = args[1];
 				blockmode = args[2];
-			}else if (args.length == 2) {
+			} else if (args.length == 2) {
 				cipher = args[1];
 			}
 		} else {
@@ -120,10 +141,8 @@ public class Test {
 		File file = new File(filename);
 		try {
 			Scanner in = new Scanner(file);
-
 			while (in.hasNextLine()) {
-				int i = in.nextInt();
-				System.out.println(i);
+				System.out.println(in.nextLine());
 			}
 			in.close();
 		} catch (FileNotFoundException e) {
