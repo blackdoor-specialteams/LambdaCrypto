@@ -34,6 +34,8 @@ public  class Crypto {
 		crypto.init(eAlgo, eMode, IV, key);
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
+		System.out.println(Misc.bytesToHex(plaintext));
+		System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 	}
 	
 	
