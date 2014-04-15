@@ -21,10 +21,13 @@ public  class Crypto {
 		/**
 		 * |example of how crypto might be used
 		 */
-		byte[] IV = new byte[32];
-		byte[] key = new byte [32];
+		int blocksize = 32;
+		byte[] IV = new byte[blocksize];
+		byte[] key = new byte [blocksize];
 		byte[] plaintext = new byte[100];
-		
+		for(int i = 0; i < plaintext.length; i++){
+			plaintext[i] = (byte) ((i/blocksize) +1);
+		}
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; // one way: use an already existing object of interface.
 		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
