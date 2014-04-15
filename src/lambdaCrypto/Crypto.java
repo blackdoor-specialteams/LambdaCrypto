@@ -11,7 +11,7 @@ public  class Crypto {
 	
 	public enum OpMode{
 		ENCRYPT, DECRYPT}
-	public static final int BLOCKSIZE = 32;
+	public int blockSize = 32;
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
 	private OpMode opMode;
@@ -74,7 +74,7 @@ public  class Crypto {
 	 * @return An IV that has been created for this cipher to use.
 	 */
 	public byte[] init(CipherAlgorithm algo, BlockCipherMode mode, byte[] key){
-		byte[] iv = new byte[BLOCKSIZE];
+		byte[] iv = new byte[blockSize];
 		new SecureRandom().nextBytes(iv);
 		init(algo, mode, iv, key);
 		return iv;
