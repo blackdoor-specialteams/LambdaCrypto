@@ -27,8 +27,8 @@ public  class Crypto {
 		byte[] plaintext = new byte[100];
 		
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (byte[] keyy, byte[] plainText) -> Ciphers.SHECrypt(keyy, plainText);
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; // one way: use an already existing object of interface.
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define interface implementation with lambda function in object declaration.
 		crypto.init(eAlgo, eMode, IV, key);
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
