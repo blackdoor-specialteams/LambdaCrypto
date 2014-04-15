@@ -10,8 +10,7 @@ import util.Misc;
 public  class Crypto {
 	
 	public enum OpMode{
-		ENCRYPT, DECRYPT
-	}
+		ENCRYPT, DECRYPT}
 	public static final int BLOCKSIZE = 32;
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
@@ -28,7 +27,7 @@ public  class Crypto {
 		
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; // one way: use an already existing object of interface.
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define interface implementation with lambda function in object declaration.
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
 		crypto.init(eAlgo, eMode, IV, key);
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
