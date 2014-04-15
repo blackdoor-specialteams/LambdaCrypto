@@ -1,0 +1,54 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////
+					~~~~ Help Menu ~~~~							
+Commands
+------------------------------------------------------
+DEFAULT RUN CONFIGURATIONS:
+	Actions performed:
+		-Encrytion on infile
+		-Ciphertext printed to first outfile
+		-Decrption printed to second outfile 
+	Default:
+		infile - in.txt
+		ciphertext - first_out.txt
+		plaintext - final_out.txt
+		
+Available Control Parameters:
+
+	[-x] - Default Run Conditions (Cipher and Blockmode)
+		Uses: used in conjunction with the following 
+		control parameters. 
+		Default cipher:
+		Default blockmode:
+		
+	[-e] - Encryption Command
+		Description:
+			Run just the encryption process. 
+		Uses:
+			-e cipher blockmode infile outfile 
+			-e cipher blockmode infile 
+			-e cipher blockmode
+			-e cipher
+			-e -x infile outfile 
+			-e -x infile
+	
+	[-d] - Decryption Command
+		Description:
+			Run just decryption process.
+		Uses:
+			-d cipher blockmode infile outfile 
+			-d cipher blockmode infile 
+			-d cipher blockmode
+			-e cipher
+			-d -x infile outfile
+			-d -x infile
+	
+	[-about] - Show About Page Command
+		Description:
+			Shows super snazzy information about the project
+		Uses:
+			-about	
+			
+Available Ciphers
+------------------------------------------------------
+Available Blockmodes
+------------------------------------------------------
