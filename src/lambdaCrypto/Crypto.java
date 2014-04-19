@@ -13,6 +13,7 @@ public  class Crypto {
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
 	private OpMode opMode;
+	private boolean initialized = false;
 	
 	
 	public static void main(String[] args){
@@ -41,8 +42,18 @@ public  class Crypto {
 		System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 	}
 	
-	public Crypto(){
+	//not a thing
+//	public Crypto(){
+//	}
+	
+	public Crypto getEncryptionCrypto(){
+		return new Crypto(OpMode.ENCRYPT);
 	}
+	
+	public Crypto getDecryptionCrypto(){
+		return new Crypto(OpMode.DECRYPT);
+	}
+	
 	public Crypto(OpMode opMode){
 		this.opMode = opMode;
 	}
@@ -57,6 +68,7 @@ public  class Crypto {
 	 */
 	public byte[] doFinal(){
 		
+		initialized = false;
 	}
 	
 	/**
@@ -69,6 +81,7 @@ public  class Crypto {
 	 */
 	public byte[] doFinal(byte[] input){
 		
+		initialized = false;
 	}
 	
 	/**
@@ -100,6 +113,7 @@ public  class Crypto {
 		}
 		this.algo = algo;
 		this.mode = mode;
+		initialized = true;
 	}
 	
 	
@@ -112,6 +126,9 @@ public  class Crypto {
 	 * @return
 	 */
 	public byte[] update(byte[] input){
+		if(!initialized)
+			throw new RuntimeException("Cipher not initialized");
+		
 		
 	}
 
