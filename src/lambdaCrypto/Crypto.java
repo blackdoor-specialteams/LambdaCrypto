@@ -128,7 +128,7 @@ public  class Crypto {
 	public byte[] update(byte[] input){
 		if(!initialized)
 			throw new RuntimeException("Cipher not initialized");
-		
+		//TEST
 		
 	}
 
