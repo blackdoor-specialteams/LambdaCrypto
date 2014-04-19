@@ -1,10 +1,8 @@
 package lambdaCrypto;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 import java.security.SecureRandom;
 
-import struct.TwoTuple;
 import util.Misc;
 
 public  class Crypto {
@@ -24,16 +22,21 @@ public  class Crypto {
 		int blocksize = 32;
 		byte[] IV = new byte[blocksize];
 		byte[] key = new byte [blocksize];
+		
 		byte[] plaintext = new byte[100];
 		for(int i = 0; i < plaintext.length; i++){
 			plaintext[i] = (byte) ((i/blocksize) +1);
 		}
+		
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; // one way: use an already existing object of interface.
 		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
+		
 		crypto.init(eAlgo, eMode, IV, key);
+		
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
+		
 		System.out.println(Misc.bytesToHex(plaintext));
 		System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 	}
