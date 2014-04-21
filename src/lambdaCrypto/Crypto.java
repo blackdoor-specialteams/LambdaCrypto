@@ -2,6 +2,7 @@ package lambdaCrypto;
 
 
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 import util.Misc;
 
@@ -128,8 +129,30 @@ public  class Crypto {
 	public byte[] update(byte[] input){
 		if(!initialized)
 			throw new RuntimeException("Cipher not initialized");
-		//TEST
-		
+
+		int length = (int) Math.ceil(input.length/(double) blockSize);
+
+		int newLength = length * blockSize;
+		byte[] input2 = new byte[newLength];
+		input2 = Arrays.copyOf(input, newLength);
+
+		byte[][] split = new byte[length][blockSize];
+	    int start = 0;
+	    for(int i = 0; i < split.length; i++) {
+	        split[i] = Arrays.copyOfRange(input2,start, start + blockSize);
+	        start += blockSize ;
+	    }
+			   
+		byte[] finalArray = new byte[newLength];	
+		int i = 0;
+	    for (byte[] byteArray : split){
+	    	byte[] crypto = someFunction(byteArray);				    //add the function
+	    	for(byte aByte: crypto){
+	    		finalArray[i++] = aByte;
+	    	}
+	    }
+								
+		return finalArray;		
 	}
 
 	/**
