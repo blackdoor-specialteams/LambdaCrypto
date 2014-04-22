@@ -10,6 +10,8 @@ public  class Crypto {
 	public enum OpMode{
 		ENCRYPT, DECRYPT}
 	public int blockSize = 32;
+	private byte[] key;
+	private byte[] iv;
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
 	private OpMode opMode;
@@ -113,6 +115,8 @@ public  class Crypto {
 		}
 		this.algo = algo;
 		this.mode = mode;
+		this.key  = key;
+		this.iv = iv;
 		initialized = true;
 	}
 	
