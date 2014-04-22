@@ -116,7 +116,7 @@ public  class Crypto {
 		this.algo = algo;
 		this.mode = mode;
 		this.key  = key;
-		this.iv = iv;
+		this.iv = IV;
 		initialized = true;
 	}
 	
