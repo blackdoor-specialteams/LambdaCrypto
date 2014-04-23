@@ -150,6 +150,7 @@ public  class Crypto {
 	    	for(byte aByte: crypto){
 	    		finalArray[i++] = aByte;
 	    	}
+	    	//This for loop is a very slow way to do this. check out System.arraycopy
 	    }
 								
 		return finalArray;		
