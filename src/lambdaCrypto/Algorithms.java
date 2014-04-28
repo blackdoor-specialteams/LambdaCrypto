@@ -3,7 +3,7 @@ package lambdaCrypto;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Ciphers {
+public class Algorithms {
 	
 //	/**
 //	 * Interface object defined as lambda function.
@@ -75,6 +75,9 @@ public class Ciphers {
 	 */
 	public static byte[] nullCipher(byte[] key, byte[] inputtext){
 		return inputtext;
+	}
+	public static CipherAlgorithm getNullCipher(){
+		return (byte[] key, byte[] input) -> nullCipher(key, input);
 	}
 	
 }

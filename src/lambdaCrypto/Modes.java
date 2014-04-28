@@ -21,6 +21,10 @@ public class Modes {
 		outputText = Misc.XOR(next, inputText);
 		return new TwoTuple<byte[], byte[]>(outputText, next);
 	}
+	
+	public static BlockCipherMode getOFB(){
+		return (CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV) -> OFB(algo, key, inputText, IV);
+	}
 
 	
 }
