@@ -79,5 +79,59 @@ public class Algorithms {
 	public static CipherAlgorithm getNullCipher(){
 		return (byte[] key, byte[] input) -> nullCipher(key, input);
 	}
+	//ECB
+	//Create a byte array
+	//Create new key
+	//create new cipher
+	//Encryption and Decryption
+/*	public static byte[] ECB(byte[] inputText, byte[] key){
+		MessageDigest mD = null;
+		try {
+			mD = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		key = mD.digest(key);
+		
+		if(key.length != inputtext.length){
+			throw new RuntimeException("Parameters are not same length for xor.");
+		}
+		
+		byte[] result = new byte[key.length];
+		for(int i = 0; i<key.length; i++){
+			result[i] = (byte) (key[i]^inputText[i])
+		}
+		
+		return result;
+	}
+*/	
+
+
+	//CBC
+	//Create a byte array for initial input
+	//create key
+	//create new ciper
+	//Encryption
+	//create new cipher for decryption
+/*	public static byte[] CBC(byte[] inputText, byte[] key){
+		MessageDigest mD = null;
+		try {
+			mD = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		key = mD.digest(key);
+		
+		if(key.length != inputtext.length){
+			throw new RuntimeException("Parameters are not same length for xor.");
+		}
+		
+		byte[] result = new byte[key.length];
+		
+	}
 	
+
+*/	
 }
