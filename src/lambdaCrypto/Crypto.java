@@ -18,7 +18,7 @@ public  class Crypto {
 	private BlockCipherMode mode;
 	private OpMode opMode;
 	private boolean initialized = false;
-	private byte[] buffer = new byte[0];
+	private byte[] buffer = null;
 	private int bufferIndex = 0;
 	
 	
@@ -136,6 +136,9 @@ public  class Crypto {
 	public byte[] update(byte[] input){
 		if(!initialized)
 			throw new RuntimeException("Cipher not initialized");
+		
+		if (buffer == null)
+			buffer = iv;
 
 		byte[] inputNew = new byte[buffer.length + input.length];
 		System.arraycopy(buffer, 0, inputNew, 0, buffer.length);
