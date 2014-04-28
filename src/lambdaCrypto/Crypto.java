@@ -17,6 +17,8 @@ public  class Crypto {
 	private BlockCipherMode mode;
 	private OpMode opMode;
 	private boolean initialized = false;
+	private byte[] buffer = new byte[0];
+	private int bufferIndex = 0;
 	
 	
 	public static void main(String[] args){
@@ -134,29 +136,44 @@ public  class Crypto {
 		if(!initialized)
 			throw new RuntimeException("Cipher not initialized");
 
-		int length = (int) Math.ceil(input.length/(double) blockSize);
-
-		int newLength = length * blockSize;
+		byte[] inputNew = new byte[buffer.length + input.length];
+		System.arraycopy(buffer, 0, inputNew, 0, buffer.length);
+		System.arraycopy(input, 0, inputNew, buffer.length, input.length);
+		int length = (int) Math.ceil(inputNew.length/(double) blockSize);
+		int newLength = length * blockSize; 
 		byte[] input2 = new byte[newLength];
-		input2 = Arrays.copyOf(input, newLength);
-
+		input2 = Arrays.copyOf(inputNew, newLength); 
+	
 		byte[][] split = new byte[length][blockSize];
 	    int start = 0;
 	    for(int i = 0; i < split.length; i++) {
-	        split[i] = Arrays.copyOfRange(input2,start, start + blockSize);
+	        split[i] = Arrays.copyOfRange(input2, start, start + blockSize); 
 	        start += blockSize ;
 	    }
-			   
-		byte[] finalArray = new byte[newLength];	
+	    		
+		bufferIndex = inputNew.length % blockSize;
+		int finalArrayLength = newLength;
+		int splitTravel = split.length;
+		if (inputNew.length % blockSize != 0){
+			buffer = new byte[bufferIndex];
+			System.arraycopy(split[split.length-1], 0, buffer, 0, bufferIndex); 
+			splitTravel--;
+			finalArrayLength = (length -1) * blockSize;
+		}
+		else{
+			buffer = new byte[0];
+			bufferIndex = 0;
+		}
+
+		byte[] finalArray = new byte[finalArrayLength]; 
+		
 		int i = 0;
-	    for (byte[] byteArray : split){
-	    	byte[] crypto = someFunction(byteArray);				    //add the function
-	    	for(byte aByte: crypto){
-	    		finalArray[i++] = aByte;
-	    	}
-	    	//This for loop is a very slow way to do this. check out System.arraycopy
-	    }
-								
+		for (int j = 0; j < splitTravel; j++){
+			byte[] crypto = blockCipherModeObject.cryptBlock(algo, key, split[j], iv); //Something like this
+	    	System.arraycopy(crypto, 0, finalArray, i, blockSize);
+	    	i+=blockSize;	    	
+	   	}
+
 		return finalArray;		
 	}
 
