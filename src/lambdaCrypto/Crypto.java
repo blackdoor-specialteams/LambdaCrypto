@@ -35,7 +35,7 @@ public  class Crypto {
 		}
 		
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; // one way: use an already existing object of interface.
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; // one way: use an already existing object of interface.
 		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
 		
 		crypto.init(eAlgo, eMode, IV, key);
@@ -110,10 +110,10 @@ public  class Crypto {
 	 */
 	public void init(CipherAlgorithm algo, BlockCipherMode mode, byte[] IV, byte[] key){
 		if(opMode == OpMode.ENCRYPT){
-			if(!(algo instanceof EncryptionAlgorithm && mode instanceof BlockCipherModeEncryption ))
+			if(algo instanceof DecryptionAlgorithm || mode instanceof BlockCipherModeDecryption )
 				throw new RuntimeException("CipherAlgorithm and/or BlockCipher Modes are not Encryption Algorithms and/or Modes");
 		}else{
-			if(!(algo instanceof DecryptionAlgorithm && mode instanceof BlockCipherModeDecryption ))
+			if(algo instanceof EncryptionAlgorithm || mode instanceof BlockCipherModeEncryption )
 			throw new RuntimeException("CipherAlgorithm and/or BlockCipher Modes are not Decryption Algorithms and/or Modes");
 		}
 		this.algo = algo;

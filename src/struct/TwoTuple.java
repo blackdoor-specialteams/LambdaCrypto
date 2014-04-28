@@ -31,5 +31,12 @@ public class TwoTuple<T1, T2> {
 	public void setT2(T2 two) {
 		this.t2 = two;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "TwoTuple [t1=" + t1 + ", t2=" + t2 + "]";
+	}
 	
 }

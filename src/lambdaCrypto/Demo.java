@@ -86,14 +86,14 @@ public class Demo {
 			Crypto crypto = new Crypto();
 			if (runmode == RunMode.ENCRYPT) {
 				crypto.setOpMode(OpMode.ENCRYPT);
-				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt; 
+				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; 
 				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
 						byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
 						.OFB(algo, keyyy, plainText, iV);
 				crypto.init(eAlgo, eMode, IV, key);
 			} else if (runmode == RunMode.DECRYPT) {
 				crypto.setOpMode(OpMode.DECRYPT);
-				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Ciphers.SHEcrypt;
+				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt;
 				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
 						byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
 						.OFB(algo, keyyy, plainText, iV);
