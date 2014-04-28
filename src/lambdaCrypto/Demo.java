@@ -8,10 +8,10 @@ import lambdaCrypto.Crypto.OpMode;
 import testpack.*;
 import util.Misc;
 
-public class Test {
+public class Demo {
 
 	public static void main(String[] args) {
-		Test tester = new Test();
+		Demo tester = new Demo();
 		// Get Run-Mode
 		if (args.length > 0) {
 			// HELP CMD
@@ -71,7 +71,7 @@ public class Test {
 
 	// TODO
 
-	public Test() {
+	public Demo() {
 		runmode = RunMode.DEFAULT;
 	}
 
