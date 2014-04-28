@@ -25,6 +25,12 @@ public class Modes {
 	public static BlockCipherMode getOFB(){
 		return (CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV) -> OFB(algo, key, inputText, IV);
 	}
+	
+	public static TwoTuple<byte[], byte[]> ECB(CipherAlgoritm algo, byte[] key, byte[] inputText, byte[] IV){
+		byte[] cipherText;
+		cipherText = algo.cryptBlock(key, inputText);
+		return new TwoTuple<byte[], Void>(outputText, null);
+	}
 
 	
 }
