@@ -4,6 +4,7 @@ package lambdaCrypto;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
+import struct.TwoTuple;
 import util.Misc;
 
 public  class Crypto {
@@ -169,8 +170,9 @@ public  class Crypto {
 		
 		int i = 0;
 		for (int j = 0; j < splitTravel; j++){
-			byte[] crypto = blockCipherModeObject.cryptBlock(algo, key, split[j], iv); //Something like this
-	    	System.arraycopy(crypto, 0, finalArray, i, blockSize);
+			TwoTuple<byte[], byte[]> crypto = mode.cryptBlock(algo, key, split[j], iv); 
+			byte[] array = crypto.getT1();
+	    	System.arraycopy(array, 0, finalArray, i, blockSize);
 	    	i+=blockSize;	    	
 	   	}
 
