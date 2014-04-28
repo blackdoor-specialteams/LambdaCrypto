@@ -171,7 +171,7 @@ public  class Crypto {
 		int i = 0;
 		for (int j = 0; j < splitTravel; j++){
 			TwoTuple<byte[], byte[]> crypto = mode.cryptBlock(algo, key, split[j], iv); 
-			byte[] array = crypto.getT1();
+			byte[] array = crypto.getT2();
 	    	System.arraycopy(array, 0, finalArray, i, blockSize);
 	    	i+=blockSize;	    	
 	   	}
