@@ -81,10 +81,11 @@ public class Demo {
 	}
 
 	private void Run(String[] args) {
+		Crypto crypto;
 		if (args != null) {
 			setFiles(args);
-			Crypto crypto = new Crypto();
 			if (runmode == RunMode.ENCRYPT) {
+				crypto = new Crypto(OpMode.ENCRYPT);
 				crypto.setOpMode(OpMode.ENCRYPT);
 				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; 
 				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
@@ -92,19 +93,22 @@ public class Demo {
 						.OFB(algo, keyyy, plainText, iV);
 				crypto.init(eAlgo, eMode, IV, key);
 			} else if (runmode == RunMode.DECRYPT) {
-				crypto.setOpMode(OpMode.DECRYPT);
-				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt;
-				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
-						byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
-						.OFB(algo, keyyy, plainText, iV);
-				crypto.init(eAlgo, eMode, IV, key);
+				crypto = new Crypto(OpMode.DECRYPT);
+				//TODO DECRYPT
 			}
 			byte[] ciphertext = crypto.update(plaintext);
 			byte[] pad = crypto.doFinal();
 			System.out.println(Misc.bytesToHex(plaintext));
 			System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 		} else {
-
+			crypto = new Crypto(OpMode.ENCRYPT);
+			EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; 
+			BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
+					byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
+					.OFB(algo, keyyy, plainText, iV);
+			crypto.init(eAlgo, eMode, IV, key);
+			//TODO Decrypt
+			crypto.setOpMode(OpMode.DECRYPT);
 		}
 	}
 
@@ -150,4 +154,12 @@ public class Demo {
 			e.printStackTrace();
 		}
 	}
+	
+	private byte[] fileStreamToBypeArray(String file){
+		return null;
+	}
+	private byte[] writeByteArrayToFile(String file){
+		return null;
+	}
+	
 }
