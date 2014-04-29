@@ -109,7 +109,7 @@ public class Demo {
 	}
 
 	private byte[] runEncrypt() {
-		plaintext = fileStreamToBypeArray(new File(infile));
+		plaintext = fileToByteArray(new File(infile));
 		System.out.println("Plaintext: " +Misc.bytesToHex(plaintext));
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 		crypto.setOpMode(OpMode.ENCRYPT);
@@ -129,7 +129,7 @@ public class Demo {
 	}
 
 	private byte[] runDecrypt() {
-		ciphertext = fileStreamToBypeArray(new File(firstoutfile));
+		ciphertext = fileToByteArray(new File(firstoutfile));
 		System.out.println("Ciphertext: " +Misc.bytesToHex(ciphertext));
 		Crypto crypto = new Crypto(OpMode.DECRYPT);
 		crypto.setOpMode(OpMode.ENCRYPT);
@@ -191,7 +191,7 @@ public class Demo {
 		}
 	}
 
-	private byte[] fileStreamToBypeArray(File file) {
+	private byte[] fileToByteArray(File file) {
 		try {
 			return Files.readAllBytes(file.toPath());
 		} catch (IOException e) {
@@ -205,7 +205,7 @@ public class Demo {
 		BufferedOutputStream bos = null;
 		try {
 			System.out.println("printing...");
-			FileOutputStream fos = new FileOutputStream(new File(filename),false);
+			FileOutputStream fos = new FileOutputStream(new File(filename));
 
 			bos = new BufferedOutputStream(fos);
 			
