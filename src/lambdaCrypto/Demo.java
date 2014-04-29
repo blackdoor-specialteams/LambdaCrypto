@@ -1,7 +1,11 @@
 package lambdaCrypto;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Scanner;
 
 import lambdaCrypto.Crypto.OpMode;
@@ -156,6 +160,13 @@ public class Demo {
 	}
 	
 	private byte[] fileStreamToBypeArray(String file){
+		FileInputStream fis = new FileInputStream(plainFile);
+		BufferedInputStream inStream = new BufferedInputStream(fis);
+		FileOutputStream fos = new FileOutputStream(cipherFile);
+		BufferedOutputStream outStream = new BufferedOutputStream(fos);
+		
+		inStream.close();
+		outStream.close();
 		return null;
 	}
 	private byte[] writeByteArrayToFile(String file){
