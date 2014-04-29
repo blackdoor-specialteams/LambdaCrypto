@@ -17,9 +17,10 @@ public  class Crypto {
 	private CipherAlgorithm algo;
 	private BlockCipherMode mode;
 	private OpMode opMode;
-	private boolean initialized = false;
+	private boolean initialized = true;
 	private byte[] buffer = null;
 	private int bufferIndex = 0;
+	private byte[] nextIv = null;
 	
 	
 	public static void main(String[] args){
@@ -36,10 +37,10 @@ public  class Crypto {
 		}
 		
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; // one way: use an already existing object of interface.
+		//EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; // one way: use an already existing object of interface.
 		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
 		
-		crypto.init(eAlgo, eMode, IV, key);
+		//crypto.init(eAlgo, eMode, IV, key);
 		
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
@@ -137,30 +138,45 @@ public  class Crypto {
 		if(!initialized)
 			throw new RuntimeException("Cipher not initialized");
 		
+		byte[] iv2;
+		
+		if (nextIv == null)
+			iv2 = nextIv;
+		else
+			iv2 = iv;
+		
 		if (buffer == null)
-			buffer = iv;
-
+			buffer = new byte[0];
+		
+		//Put the buffer at the front of input
 		byte[] inputNew = new byte[buffer.length + input.length];
 		System.arraycopy(buffer, 0, inputNew, 0, buffer.length);
 		System.arraycopy(input, 0, inputNew, buffer.length, input.length);
+		
+		
+		//Break into arrays of 32 bytes
+		//Determine length of array[][]
 		int length = (int) Math.ceil(inputNew.length/(double) blockSize);
 		int newLength = length * blockSize; 
 		byte[] input2 = new byte[newLength];
 		input2 = Arrays.copyOf(inputNew, newLength); 
 	
+		//Put each array of 32 bytes into an array of arrays
+		//Create 2D array[][]
 		byte[][] split = new byte[length][blockSize];
 	    int start = 0;
 	    for(int i = 0; i < split.length; i++) {
 	        split[i] = Arrays.copyOfRange(input2, start, start + blockSize); 
 	        start += blockSize ;
 	    }
-	    		
+	    
+	    //Save the new buffer
 		bufferIndex = inputNew.length % blockSize;
 		int finalArrayLength = newLength;
 		int splitTravel = split.length;
 		if (inputNew.length % blockSize != 0){
 			buffer = new byte[bufferIndex];
-			System.arraycopy(split[split.length-1], 0, buffer, 0, bufferIndex); 
+			System.arraycopy(split[split.length-1], 0, buffer, 0, bufferIndex); //Put last array in 2D array into buffer
 			splitTravel--;
 			finalArrayLength = (length -1) * blockSize;
 		}
@@ -169,12 +185,16 @@ public  class Crypto {
 			bufferIndex = 0;
 		}
 
+		//Output array
 		byte[] finalArray = new byte[finalArrayLength]; 
 		
 		int i = 0;
 		for (int j = 0; j < splitTravel; j++){
-			TwoTuple<byte[], byte[]> crypto = mode.cryptBlock(algo, key, split[j], iv); 
+			TwoTuple<byte[], byte[]> crypto = mode.cryptBlock(algo, key, split[j], iv2); 
+			//Encrypted array
 			byte[] array = crypto.getT2();
+			//Iv for the next block?
+			iv = crypto.getT1();
 	    	System.arraycopy(array, 0, finalArray, i, blockSize);
 	    	i+=blockSize;	    	
 	   	}
