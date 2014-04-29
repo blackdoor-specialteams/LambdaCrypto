@@ -91,17 +91,20 @@ public class Demo {
 	private void Run(String[] args) {
 		try {
 			if (args != null) {
-				setFiles(args);
+			//	setFiles(args);
 				if (runmode == RunMode.ENCRYPT) {
-					writeByteArrayToFile(firstoutfile, runEncrypt());
-					
+					ciphertext = runEncrypt(infile);
+					writeByteArrayToFile(firstoutfile, ciphertext);
 				} else if (runmode == RunMode.DECRYPT) {
-				
-					writeByteArrayToFile(finaloutfile, runDecrypt());
+					plaintext = runDecrypt(firstoutfile);
+					writeByteArrayToFile(finaloutfile, plaintext);
 				}
 			} else {
-				writeByteArrayToFile(firstoutfile, runEncrypt());
-				writeByteArrayToFile(finaloutfile, runDecrypt());
+				ciphertext = runEncrypt(infile);
+				System.out.println("ciphertext in memory pre write\n" + Misc.bytesToHex(ciphertext));
+				writeByteArrayToFile(firstoutfile, ciphertext);
+				plaintext = runDecrypt(firstoutfile);
+				writeByteArrayToFile(finaloutfile, plaintext);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,52 +112,67 @@ public class Demo {
 		}
 	}
 
-	private byte[] runEncrypt() {
-		plaintext = fileToByteArray(new File(infile));
-		System.out.println("Plaintext: " +Misc.bytesToHex(plaintext));
+	private byte[] runEncrypt(String filename) {
+		byte[] _plaintext = fileToByteArray(new File(filename));
+		System.out.println("Plaintext: " + Misc.bytesToHex(_plaintext));
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 
-		//EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.getSHECipher(); 
-	
-//		crypto.init(eAlgo, eMode, IV, key);
-//		byte[] ctext = crypto.update(plaintext);
-//		byte[] pad = crypto.doFinal();
-//		
-//		byte[] finalarray = new byte[100];
-//		System.arraycopy(finalarray, 0, ctext, 0, ctext.length);
-//		System.arraycopy(finalarray, 0, pad, 0, pad.length);
-		
-		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(),IV, key);
-		byte[] ctext = crypto.update(Arrays.copyOf(plaintext, plaintext.length));
+		// EncryptionAlgorithm eAlgo = (EncryptionAlgorithm)
+		// Algorithms.getSHECipher();
+
+		// crypto.init(eAlgo, eMode, IV, key);
+		// byte[] ctext = crypto.update(plaintext);
+		// byte[] pad = crypto.doFinal();
+		//
+		// byte[] finalarray = new byte[100];
+		// System.arraycopy(finalarray, 0, ctext, 0, ctext.length);
+		// System.arraycopy(finalarray, 0, pad, 0, pad.length);
+
+		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(), IV, key);
+		byte[] ctext = crypto
+				.update(_plaintext);
 		byte[] _final = crypto.doFinal();
-		return _final;
+		
+		 byte[] finalarray = new byte[_final.length + ctext.length];
+		 System.arraycopy(ctext, 0, finalarray, 0, ctext.length);
+		 System.arraycopy(_final, 0, finalarray, ctext.length, _final.length);
+		 
+		 System.out.println("ciphertext in memory pre write\n" + Misc.bytesToHex(finalarray));
+		return finalarray;
 	}
 
-	private byte[] runDecrypt() {
-		ciphertext = fileToByteArray(new File(firstoutfile));
-		System.out.println("Ciphertext: " +Misc.bytesToHex(ciphertext));
-		Crypto crypto = new Crypto(OpMode.DECRYPT);
-		
-//		CipherAlgorithm eAlgo = Algorithms.getSHECipher();
-//		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
-//				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
-//				plainText, iV);
-//		crypto.init(eAlgo, eMode, IV, key);
-//		byte[] ptext = crypto.update(ciphertext);
-//		byte[] pad = crypto.doFinal();
-//		
-//		byte[] finalarray = new byte[100];
-//		System.arraycopy(finalarray, 0, ptext, 0, ptext.length);
-//		System.arraycopy(finalarray, 0, pad, 0, pad.length);
-		
-		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(),IV, key);
-		byte[] ctext = crypto.update(Arrays.copyOf(ciphertext, ciphertext.length));
+	private byte[] runDecrypt(String filename) {
+		byte[] _ciphertext = fileToByteArray(new File(filename));
+		System.out.println("Ciphertext: " + Misc.bytesToHex(ciphertext));
+		Crypto crypto = new Crypto(Crypto.OpMode.DECRYPT);
+
+		// CipherAlgorithm eAlgo = Algorithms.getSHECipher();
+		// BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[]
+		// keyyy,
+		// byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
+		// plainText, iV);
+		// crypto.init(eAlgo, eMode, IV, key);
+		// byte[] ptext = crypto.update(ciphertext);
+		// byte[] pad = crypto.doFinal();
+		//
+		// byte[] finalarray = new byte[100];
+		// System.arraycopy(finalarray, 0, ptext, 0, ptext.length);
+		// System.arraycopy(finalarray, 0, pad, 0, pad.length);
+
+		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(), IV, key);
+		byte[] ptext = crypto.update(Arrays.copyOf(_ciphertext,
+				_ciphertext.length));
 		byte[] _final = crypto.doFinal();
-		return _final;
+		 
+		 byte[] finalarray = new byte[_final.length + ptext.length];
+		 System.arraycopy(ptext, 0, finalarray, 0, ptext.length);
+		 System.arraycopy(_final, 0, finalarray, ptext.length, _final.length);
+		 
+		return finalarray;
 	}
 
 	private void setFiles(String[] args) {
-		//TODO
+		// TODO
 		if (args[0] != "-x") {
 			if (args.length == 4) {
 				cipher = args[1];
@@ -199,7 +217,9 @@ public class Demo {
 
 	private byte[] fileToByteArray(File file) {
 		try {
-			return Files.readAllBytes(file.toPath());
+			byte[] out = Files.readAllBytes(file.toPath());
+			System.out.println(Misc.bytesToHex(out));
+			return out;
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Error with file in!! ahhhhhh!!");
@@ -214,8 +234,7 @@ public class Demo {
 			FileOutputStream fos = new FileOutputStream(new File(filename));
 
 			bos = new BufferedOutputStream(fos);
-			
-			
+
 			bos.write(text);
 			bos.close();
 		} catch (Exception e) {
