@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 import lambdaCrypto.Crypto.OpMode;
@@ -72,7 +74,8 @@ public class Demo {
 	private byte[] IV = new byte[BLOCKSIZE];
 	private byte[] key = new byte[BLOCKSIZE];
 	private byte[] plaintext = new byte[100];
-
+	private File plainFile;
+	private File cipherFile;
 	// TODO
 
 	public Demo() {
@@ -85,37 +88,48 @@ public class Demo {
 	}
 
 	private void Run(String[] args) {
+		plaintext = fileStreamToBypeArray(new File(infile));
 		Crypto crypto;
 		if (args != null) {
 			setFiles(args);
 			if (runmode == RunMode.ENCRYPT) {
-				crypto = new Crypto(OpMode.ENCRYPT);
-				crypto.setOpMode(OpMode.ENCRYPT);
-				EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; 
-				BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
-						byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
-						.OFB(algo, keyyy, plainText, iV);
-				crypto.init(eAlgo, eMode, IV, key);
+				runEncrypt();
 			} else if (runmode == RunMode.DECRYPT) {
-				crypto = new Crypto(OpMode.DECRYPT);
-				//TODO DECRYPT
+				runDecrypt();
 			}
-			byte[] ciphertext = crypto.update(plaintext);
-			byte[] pad = crypto.doFinal();
-			System.out.println(Misc.bytesToHex(plaintext));
-			System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
+
+//			System.out.println(Misc.bytesToHex(plaintext));
+//			System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 		} else {
-			crypto = new Crypto(OpMode.ENCRYPT);
-			EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHEcrypt; 
-			BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
-					byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
-					.OFB(algo, keyyy, plainText, iV);
-			crypto.init(eAlgo, eMode, IV, key);
-			//TODO Decrypt
-			crypto.setOpMode(OpMode.DECRYPT);
+			runEncrypt();
+			runDecrypt();
 		}
 	}
-
+	
+	private void runEncrypt(){
+		Crypto crypto = new Crypto(OpMode.ENCRYPT);
+		crypto.setOpMode(OpMode.ENCRYPT);
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt; 
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
+				byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
+				.OFB(algo, keyyy, plainText, iV);
+		crypto.init(eAlgo, eMode, IV, key);
+		byte[] ciphertext = crypto.update(plaintext);
+		byte[] pad = crypto.doFinal();
+	}
+	
+	private void runDecrypt(){
+		Crypto crypto = new Crypto(OpMode.DECRYPT);
+		crypto.setOpMode(OpMode.ENCRYPT);
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt; 
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
+				byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
+				.OFB(algo, keyyy, plainText, iV);
+		crypto.init(eAlgo, eMode, IV, key);
+		byte[] ciphertext = crypto.update(plaintext);
+		byte[] pad = crypto.doFinal();
+	}
+	
 	private void setFiles(String[] args) {
 		if (args[1] != "-x") {
 			if (args.length == 5) {
@@ -159,18 +173,14 @@ public class Demo {
 		}
 	}
 	
-	private byte[] fileStreamToBypeArray(String file){
-		FileInputStream fis = new FileInputStream(plainFile);
-		BufferedInputStream inStream = new BufferedInputStream(fis);
-		FileOutputStream fos = new FileOutputStream(cipherFile);
-		BufferedOutputStream outStream = new BufferedOutputStream(fos);
-		
-		inStream.close();
-		outStream.close();
-		return null;
+	private byte[] fileStreamToBypeArray(File file) throws Exception{
+		return Files.readAllBytes(file.toPath());
 	}
-	private byte[] writeByteArrayToFile(String file){
-		return null;
+	private byte[] writeByteArrayToFile(String filename,File file) throws Exception{
+		FileOutputStream fw = new FileOutputStream(file);
+		fw.write(out.simpleSerial());
+		fw.close();
 	}
+
 	
 }
