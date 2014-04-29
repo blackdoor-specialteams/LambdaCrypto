@@ -26,11 +26,51 @@ public class Modes {
 		return (CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV) -> OFB(algo, key, inputText, IV);
 	}
 	
-	public static TwoTuple<byte[], byte[]> ECB(CipherAlgoritm algo, byte[] key, byte[] inputText, byte[] IV){
+	public static TwoTuple<byte[], byte[]> ECB(CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV){
 		byte[] cipherText;
 		cipherText = algo.cryptBlock(key, inputText);
-		return new TwoTuple<byte[], Void>(outputText, null);
+		return new TwoTuple<byte[], byte[]>(cipherText, null);
 	}
+	
+	public static TwoTuple<byte[], byte[]> CBCEncrypt(CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV){
+		byte[] next;
+		byte[] outputText;
+		byte[] bceText;
+		bceText = Misc.XOR(inputText, IV);
+		
+		next = algo.cryptBlock(key, bceText);
+		
+		outputText = next;
+		return new TwoTuple<byte[], byte[]>(outputText, next);
+	}
+	public static TwoTuple<byte[], byte[]> CBCDecrypt(CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV){
+		byte[] next;
+		byte[] outputText;
+		byte[] bceText;
+		next = inputText;
+		
+		bceText = algo.cryptBlock(key, inputText);
+		outputText = Misc.XOR(bceText, IV);
+		
+		return new TwoTuple<byte[], byte[]>(outputText, next);
+	}
+		
+	public static BlockCipherMode getCBCEncrypt(){
+		return (CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV) -> CBCEncrypt(algo, key, inputText, IV);
+	}
+	
+	public static BlockCipherMode getCBCDecrypt(){
+		return (CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV) -> CBCDecrypt(algo, key, inputText, IV);
+	}
+
+	//this was obviously not ready to be pushed into the main branch
+//		public static TwoTuple<byte[], byte[]> CFB(CipherAlgorithm algo, byte[] key, byte[] inputText, byte[] IV){	 
+//			byte[] next;
+//			byte[] outputText;
+//			byte[] bceText;
+//			
+//			bceText = algo.cryptBlock
+//		}
 
 	
 }
