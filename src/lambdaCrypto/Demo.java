@@ -78,8 +78,6 @@ public class Demo {
 	private File plainFile;
 	private File cipherFile;
 
-	// TODO
-
 	public Demo() {
 		runmode = RunMode.DEFAULT;
 	}
@@ -91,16 +89,22 @@ public class Demo {
 
 	private void Run(String[] args) {
 		plaintext = fileStreamToBypeArray(new File(infile));
-		ciphertext = fileStreamToBypeArray(new File(firstoutfile));
+		//ciphertext = fileStreamToBypeArray(new File(firstoutfile));
 		try {
 			if (args != null) {
 				setFiles(args);
 				if (runmode == RunMode.ENCRYPT) {
+					System.out.println("Plaintext: " + Misc.bytesToHex(plaintext));
 					writeByteArrayToFile(firstoutfile, runEncrypt());
+					
 				} else if (runmode == RunMode.DECRYPT) {
+					System.out.println("Ciphertext: " +Misc.bytesToHex(ciphertext));
 					writeByteArrayToFile(finaloutfile, runDecrypt());
 				}
 			} else {
+				System.out.println("Plaintext: " +Misc.bytesToHex(plaintext));
+				System.out.println("Ciphertext: " +Misc.bytesToHex(ciphertext));
+
 				writeByteArrayToFile(firstoutfile, runEncrypt());
 				writeByteArrayToFile(finaloutfile, runDecrypt());
 			}
@@ -113,27 +117,27 @@ public class Demo {
 	private byte[] runEncrypt() {
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 		crypto.setOpMode(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt;
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
-				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
-				plainText, iV);
+
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.getSHECipher(); // one way: use an already existing object of interface.
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
+		
 		crypto.init(eAlgo, eMode, IV, key);
-		byte[] ciphertext = crypto.update(plaintext);
+		byte[] ctext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
 
-		System.arraycopy(ciphertext, 0, pad, 0, pad.length);
-		return ptext;
+		System.arraycopy(ctext, 0, pad, 0, pad.length);
+		return ctext;
 	}
 
 	private byte[] runDecrypt() {
 		Crypto crypto = new Crypto(OpMode.DECRYPT);
 		crypto.setOpMode(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt;
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.getSHECipher();
 		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
 				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
 				plainText, iV);
 		crypto.init(eAlgo, eMode, IV, key);
-		byte[] ptext = crypto.update(plaintext);
+		byte[] ptext = crypto.update(ciphertext);
 		byte[] pad = crypto.doFinal();
 
 		System.arraycopy(ptext, 0, pad, 0, pad.length);
@@ -141,8 +145,9 @@ public class Demo {
 	}
 
 	private void setFiles(String[] args) {
-		if (args[1] != "-x") {
-			if (args.length == 5) {
+		//TODO
+		if (args[0] != "-x") {
+			if (args.length == 4) {
 				cipher = args[1];
 				blockmode = args[2];
 				infile = args[3];
@@ -187,18 +192,24 @@ public class Demo {
 		try {
 			return Files.readAllBytes(file.toPath());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Error with file!! ahhhhhh!!");
+			System.out.println("Error with file in!! ahhhhhh!!");
 		}
 		return null;
 	}
 
-	private byte[] writeByteArrayToFile(String filename, byte[] text)
-			throws Exception {
-		FileOutputStream fw = new FileOutputStream(new File(filename));
-		fw.write(out.simpleSerial());
-		fw.close();
-	}
+	private void writeByteArrayToFile(String filename, byte[] text) {
+		BufferedOutputStream bos = null;
+		try {
 
+			FileOutputStream fos = new FileOutputStream(new File(filename));
+
+			bos = new BufferedOutputStream(fos);
+			bos.write(text);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Write out didnt work!");
+		}
+
+	}
 }
