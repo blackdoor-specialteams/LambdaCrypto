@@ -204,7 +204,7 @@ public  class Crypto {
 			System.arraycopy(input, numBlocks*blockSize, buffer, 0, input.length - numBlocks*blockSize);
 			bufferIndex = input.length - numBlocks*blockSize;
 		}
-		System.out.println("buffer: " + Misc.bytesToHex(buffer));
+		//System.out.println("buffer: " + Misc.bytesToHex(buffer));
 		return out;
 
 //		byte[] inputNew = new byte[buffer.length + input.length];
