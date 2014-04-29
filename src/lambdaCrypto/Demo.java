@@ -74,8 +74,10 @@ public class Demo {
 	private byte[] IV = new byte[BLOCKSIZE];
 	private byte[] key = new byte[BLOCKSIZE];
 	private byte[] plaintext = new byte[100];
+	private byte[] ciphertext = new byte[100];
 	private File plainFile;
 	private File cipherFile;
+
 	// TODO
 
 	public Demo() {
@@ -89,47 +91,55 @@ public class Demo {
 
 	private void Run(String[] args) {
 		plaintext = fileStreamToBypeArray(new File(infile));
-		Crypto crypto;
-		if (args != null) {
-			setFiles(args);
-			if (runmode == RunMode.ENCRYPT) {
-				runEncrypt();
-			} else if (runmode == RunMode.DECRYPT) {
-				runDecrypt();
+		ciphertext = fileStreamToBypeArray(new File(firstoutfile));
+		try {
+			if (args != null) {
+				setFiles(args);
+				if (runmode == RunMode.ENCRYPT) {
+					writeByteArrayToFile(firstoutfile, runEncrypt());
+				} else if (runmode == RunMode.DECRYPT) {
+					writeByteArrayToFile(finaloutfile, runDecrypt());
+				}
+			} else {
+				writeByteArrayToFile(firstoutfile, runEncrypt());
+				writeByteArrayToFile(finaloutfile, runDecrypt());
 			}
-
-//			System.out.println(Misc.bytesToHex(plaintext));
-//			System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
-		} else {
-			runEncrypt();
-			runDecrypt();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Major Problems in RUN. Some stuff went down");
 		}
 	}
-	
-	private void runEncrypt(){
+
+	private byte[] runEncrypt() {
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 		crypto.setOpMode(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt; 
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
-				byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
-				.OFB(algo, keyyy, plainText, iV);
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt;
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
+				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
+				plainText, iV);
 		crypto.init(eAlgo, eMode, IV, key);
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
+
+		System.arraycopy(ciphertext, 0, pad, 0, pad.length);
+		return ptext;
 	}
-	
-	private void runDecrypt(){
+
+	private byte[] runDecrypt() {
 		Crypto crypto = new Crypto(OpMode.DECRYPT);
 		crypto.setOpMode(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt; 
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo,
-				byte[] keyyy, byte[] plainText, byte[] iV) -> Modes
-				.OFB(algo, keyyy, plainText, iV);
+		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.SHECrypt;
+		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
+				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
+				plainText, iV);
 		crypto.init(eAlgo, eMode, IV, key);
-		byte[] ciphertext = crypto.update(plaintext);
+		byte[] ptext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
+
+		System.arraycopy(ptext, 0, pad, 0, pad.length);
+		return ptext;
 	}
-	
+
 	private void setFiles(String[] args) {
 		if (args[1] != "-x") {
 			if (args.length == 5) {
@@ -172,15 +182,23 @@ public class Demo {
 			e.printStackTrace();
 		}
 	}
-	
-	private byte[] fileStreamToBypeArray(File file) throws Exception{
-		return Files.readAllBytes(file.toPath());
+
+	private byte[] fileStreamToBypeArray(File file) {
+		try {
+			return Files.readAllBytes(file.toPath());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error with file!! ahhhhhh!!");
+		}
+		return null;
 	}
-	private byte[] writeByteArrayToFile(String filename,File file) throws Exception{
-		FileOutputStream fw = new FileOutputStream(file);
+
+	private byte[] writeByteArrayToFile(String filename, byte[] text)
+			throws Exception {
+		FileOutputStream fw = new FileOutputStream(new File(filename));
 		fw.write(out.simpleSerial());
 		fw.close();
 	}
 
-	
 }
