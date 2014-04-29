@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import lambdaCrypto.Crypto.OpMode;
@@ -112,39 +113,44 @@ public class Demo {
 		plaintext = fileToByteArray(new File(infile));
 		System.out.println("Plaintext: " +Misc.bytesToHex(plaintext));
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
-		crypto.setOpMode(OpMode.ENCRYPT);
 
 		//EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.getSHECipher(); 
-		CipherAlgorithm eAlgo =  Algorithms.getSHECipher(); 
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);
+	
+//		crypto.init(eAlgo, eMode, IV, key);
+//		byte[] ctext = crypto.update(plaintext);
+//		byte[] pad = crypto.doFinal();
+//		
+//		byte[] finalarray = new byte[100];
+//		System.arraycopy(finalarray, 0, ctext, 0, ctext.length);
+//		System.arraycopy(finalarray, 0, pad, 0, pad.length);
 		
-		crypto.init(eAlgo, eMode, IV, key);
-		byte[] ctext = crypto.update(plaintext);
-		byte[] pad = crypto.doFinal();
-		
-		byte[] finalarray = new byte[100];
-		System.arraycopy(finalarray, 0, ctext, 0, ctext.length);
-		System.arraycopy(finalarray, 0, pad, 0, pad.length);
-		return finalarray;
+		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(),IV, key);
+		byte[] ctext = crypto.update(Arrays.copyOf(plaintext, plaintext.length));
+		byte[] _final = crypto.doFinal();
+		return _final;
 	}
 
 	private byte[] runDecrypt() {
 		ciphertext = fileToByteArray(new File(firstoutfile));
 		System.out.println("Ciphertext: " +Misc.bytesToHex(ciphertext));
 		Crypto crypto = new Crypto(OpMode.DECRYPT);
-		crypto.setOpMode(OpMode.ENCRYPT);
-		CipherAlgorithm eAlgo = Algorithms.getSHECipher();
-		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
-				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
-				plainText, iV);
-		crypto.init(eAlgo, eMode, IV, key);
-		byte[] ptext = crypto.update(ciphertext);
-		byte[] pad = crypto.doFinal();
 		
-		byte[] finalarray = new byte[100];
-		System.arraycopy(finalarray, 0, ptext, 0, ptext.length);
-		System.arraycopy(finalarray, 0, pad, 0, pad.length);
-		return finalarray;
+//		CipherAlgorithm eAlgo = Algorithms.getSHECipher();
+//		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy,
+//				byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy,
+//				plainText, iV);
+//		crypto.init(eAlgo, eMode, IV, key);
+//		byte[] ptext = crypto.update(ciphertext);
+//		byte[] pad = crypto.doFinal();
+//		
+//		byte[] finalarray = new byte[100];
+//		System.arraycopy(finalarray, 0, ptext, 0, ptext.length);
+//		System.arraycopy(finalarray, 0, pad, 0, pad.length);
+		
+		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(),IV, key);
+		byte[] ctext = crypto.update(Arrays.copyOf(ciphertext, ciphertext.length));
+		byte[] _final = crypto.doFinal();
+		return _final;
 	}
 
 	private void setFiles(String[] args) {

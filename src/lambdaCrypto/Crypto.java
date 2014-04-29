@@ -37,7 +37,7 @@ public  class Crypto {
 		}
 		
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
-		EncryptionAlgorithm eAlgo = (EncryptionAlgorithm) Algorithms.getSHECipher(); // one way: use an already existing object of interface.
+		CipherAlgorithm eAlgo = Algorithms.getSHECipher(); // one way: use an already existing object of interface.
 		BlockCipherModeEncryption eMode = (CipherAlgorithm algo, byte[] keyyy, byte[] plainText, byte[] iV) -> Modes.OFB(algo, keyyy, plainText, iV);// another way: define functional interface with static method in object declaration.
 		
 		crypto.init(eAlgo, eMode, IV, key);
