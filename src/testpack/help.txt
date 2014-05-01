@@ -50,5 +50,9 @@ Available Control Parameters:
 			
 Available Ciphers
 ------------------------------------------------------
+	-SHE
+	-NULL
+	
 Available Blockmodes
 ------------------------------------------------------
+

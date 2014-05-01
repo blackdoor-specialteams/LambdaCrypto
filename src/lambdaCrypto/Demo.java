@@ -68,7 +68,7 @@ public class Demo {
 	private String infile = "src/testpack/in.txt";
 	private String firstoutfile = "src/testpack/first_out.txt";
 	private String finaloutfile = "src/testpack/final_out.txt";
-	private String cipher = "default cipher";
+	private String cipher = "SHE";
 	// TODO
 	private String blockmode = "default blockmode";
 	private final int BLOCKSIZE = 32;
@@ -76,8 +76,6 @@ public class Demo {
 	private byte[] key = new byte[BLOCKSIZE];
 	private byte[] plaintext = new byte[100];
 	private byte[] ciphertext = new byte[100];
-	private File plainFile;
-	private File cipherFile;
 
 	public Demo() {
 		runmode = RunMode.DEFAULT;
@@ -91,7 +89,7 @@ public class Demo {
 	private void Run(String[] args) {
 		try {
 			if (args != null) {
-			//	setFiles(args);
+				// setFiles(args);
 				if (runmode == RunMode.ENCRYPT) {
 					ciphertext = runEncrypt(infile);
 					writeByteArrayToFile(firstoutfile, ciphertext);
@@ -101,7 +99,7 @@ public class Demo {
 				}
 			} else {
 				ciphertext = runEncrypt(infile);
-			
+
 				writeByteArrayToFile(firstoutfile, ciphertext);
 				plaintext = runDecrypt(firstoutfile);
 				writeByteArrayToFile(finaloutfile, plaintext);
@@ -115,31 +113,39 @@ public class Demo {
 	private byte[] runEncrypt(String filename) {
 		byte[] _plaintext = fileToByteArray(new File(filename));
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
-		
-		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(), IV, key);
-		byte[] ctext = crypto
-				.update(_plaintext);
-		byte[] _final = crypto.doFinal();
-		
-		 byte[] finalarray = new byte[_final.length + ctext.length];
-		 System.arraycopy(ctext, 0, finalarray, 0, ctext.length);
-		 System.arraycopy(_final, 0, finalarray, ctext.length, _final.length);
-		return finalarray;
+
+		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		return runCipher(crypto, _plaintext);
 	}
 
 	private byte[] runDecrypt(String filename) {
 		byte[] _ciphertext = fileToByteArray(new File(filename));
-		System.out.println("Ciphertext: " + Misc.bytesToHex(ciphertext));
+		// System.out.println("Ciphertext: " + Misc.bytesToHex(ciphertext));
 		Crypto crypto = new Crypto(Crypto.OpMode.DECRYPT);
-		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(), IV, key);
-		byte[] ptext = crypto.update(Arrays.copyOf(_ciphertext,
-				_ciphertext.length));
-		byte[] _final = crypto.doFinal();
-		 
-		 byte[] finalarray = new byte[_final.length + ptext.length];
-		 System.arraycopy(ptext, 0, finalarray, 0, ptext.length);
-		 System.arraycopy(_final, 0, finalarray, ptext.length, _final.length);
-		 
+		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		return runCipher(crypto, _ciphertext);
+	}
+
+	private CipherAlgorithm chooseCipher() {
+		CipherAlgorithm choice = null;
+		switch (cipher) {
+		case "SHE":
+			choice = Algorithms.getSHECipher();
+			break;
+		case "NULL":
+			choice = Algorithms.getNullCipher();
+			break;
+		}
+		return choice;
+	}
+
+	private byte[] runCipher(Crypto crypto, byte[] inputtext) {
+		byte[] text = crypto.update(Arrays.copyOf(inputtext, inputtext.length));
+		byte[] final_text = crypto.doFinal();
+		byte[] finalarray = new byte[final_text.length + text.length];
+		System.arraycopy(text, 0, finalarray, 0, text.length);
+		System.arraycopy(final_text, 0, finalarray, text.length,
+				final_text.length);
 		return finalarray;
 	}
 
