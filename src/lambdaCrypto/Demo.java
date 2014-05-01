@@ -70,7 +70,7 @@ public class Demo {
 	private String finaloutfile = "src/testpack/final_out.txt";
 	private String cipher = "SHE";
 	// TODO
-	private String blockmode = "default blockmode";
+	private String blockmode = "OFB";
 	private final int BLOCKSIZE = 32;
 	private byte[] IV = new byte[BLOCKSIZE];
 	private byte[] key = new byte[BLOCKSIZE];
@@ -113,22 +113,23 @@ public class Demo {
 
 	private byte[] runEncrypt(String filename) {
 		byte[] _plaintext = fileToByteArray(new File(filename));
+		//writeByteArrayToFile("src/testpack/testtest.txt", _plaintext);
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 
-		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		crypto.init(chooseCipher(), chooseBlockMode(crypto), IV, key);
 		return runCipher(crypto, _plaintext);
 	}
 
 	private byte[] runDecrypt(String filename) {
 		byte[] _ciphertext = fileToByteArray(new File(filename));
 		Crypto crypto = new Crypto(Crypto.OpMode.DECRYPT);
-		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		crypto.init(chooseCipher(), chooseBlockMode(crypto), IV, key);
 		return runCipher(crypto, _ciphertext);
 	}
 
 	private byte[] runDecrypt(byte[] barray) {
 		Crypto crypto = new Crypto(Crypto.OpMode.DECRYPT);
-		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		crypto.init(chooseCipher(), chooseBlockMode(crypto), IV, key);
 		return runCipher(crypto, barray);
 	}
 
@@ -140,6 +141,16 @@ public class Demo {
 			break;
 		case "NULL":
 			choice = Algorithms.getNullCipher();
+			break;
+		}
+		return choice;
+	}
+	private BlockCipherMode chooseBlockMode(Crypto crypto) {
+		BlockCipherMode choice = null;
+	//	if(crypto.)
+		switch (blockmode) {
+		case "OFB":
+			choice =  Modes.getOFB();
 			break;
 		}
 		return choice;
