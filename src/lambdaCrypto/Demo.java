@@ -3,11 +3,12 @@ package lambdaCrypto;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -136,10 +137,28 @@ public class Demo {
 		CipherAlgorithm choice = null;
 		switch (cipher) {
 		case "SHE":
-			choice = Algorithms.getSHECipher();
+			choice = (byte[] key, byte[] inputtext) -> {
+				MessageDigest mD = null;
+				try {
+					mD = MessageDigest.getInstance("SHA-256");
+				} catch (NoSuchAlgorithmException e) {
+					e.printStackTrace();
+				}
+				
+				key = mD.digest(key);
+				
+				if(key.length != inputtext.length)
+					throw new RuntimeException("Parameters are not same length for xor.");
+				
+				for(int i = 0; i < key.length; i++)
+					key[i] = (byte) (key[i]^inputtext[i]);
+				
+				return key;
+			};
 			break;
 		case "NULL":
-			choice = Algorithms.getNullCipher();
+			choice = (byte[] key, byte[] inputtext) -> {return inputtext;
+			};
 			break;
 		}
 		return choice;
