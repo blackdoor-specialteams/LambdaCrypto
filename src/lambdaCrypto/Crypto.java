@@ -90,6 +90,7 @@ public  class Crypto {
 		System.out.println(bufferIndex);
 		byte[] main = update(input);
 		byte[] out;
+		System.out.println(Misc.bytesToHex(main));
 		//if buffer isn't empty add a padding indicator to the end of data
 		if(bufferIndex != 0){
 			

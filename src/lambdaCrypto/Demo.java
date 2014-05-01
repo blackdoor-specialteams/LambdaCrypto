@@ -115,7 +115,7 @@ public class Demo {
 		byte[] _plaintext = fileToByteArray(new File(filename));
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 
-		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		IV = crypto.init(chooseCipher(), Modes.getOFB(),key);
 		return runCipher(crypto, _plaintext);
 	}
 
@@ -146,7 +146,9 @@ public class Demo {
 	}
 
 	private byte[] runCipher(Crypto crypto, byte[] inputtext) {
-		byte[] final_text = crypto.doFinal(Arrays.copyOf(inputtext, inputtext.length));
+		System.out.println(new String(inputtext));
+		byte[] final_text = crypto.doFinal(inputtext);
+		System.out.println(new String(final_text));
 		return final_text;
 	}
 

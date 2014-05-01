@@ -9,17 +9,19 @@ public class Test {
 
 	public static void main(String[] args) {
 		byte[] IV = new byte[32];
-		byte[] plainText = new byte[100];
+		byte[] plainText = new byte[1000];
 		byte[] key = new byte[32];
 		for(int i = 0; i < plainText.length; i++){
 			plainText[i] = (byte) ((i/32) +1);
 		}
+		plainText = "this is text \n asdlfah;fla;sohf\n boo".getBytes();
+		System.out.println(Misc.bytesToHex(plainText));
 		Crypto crypto = new Crypto(Crypto.OpMode.ENCRYPT);
 		/*######################################################################
 		#### Null Cipher #######################################################
 		######################################################################*/
 		
-		crypto.init(Algorithms.getNullCipher(), Modes.getOFB(),IV, key);
+		/*crypto.init(Algorithms.getNullCipher(), Modes.getOFB(),IV, key);
 		
 		System.out.println(Misc.bytesToHex(Modes.OFB(Algorithms.getNullCipher(), key, plainText, IV).getT1()));
 		
@@ -44,7 +46,7 @@ public class Test {
 		System.out.println(rest.length + ":" + Misc.bytesToHex(rest));
 		
 		_final = crypto.doFinal(_final);
-		System.out.println(Misc.bytesToHex(_final));
+		System.out.println(Misc.bytesToHex(_final));*/
 		
 		//######################################################################
 		
@@ -52,16 +54,16 @@ public class Test {
 		/*######################################################################
 		#### SHE Cipher ########################################################
 		######################################################################*/
-		System.out.println("enCRYPT###############");
+//		System.out.println("enCRYPT###############");
 		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(),IV, key);
-				
-		_0_40 = crypto.update(Arrays.copyOf(plainText, 40));
-		System.out.println(_0_40.length + ":" + Misc.bytesToHex(_0_40));
+//				
+//		byte[] _0_40 = crypto.update(Arrays.copyOf(plainText, 40));
+//		System.out.println(_0_40.length + ":" + Misc.bytesToHex(_0_40));
+//		
+//		byte [] rest = crypto.update(Arrays.copyOfRange(plainText, 40, plainText.length));
+//		System.out.println(rest.length + ":" + Misc.bytesToHex(rest));
 		
-		rest = crypto.update(Arrays.copyOfRange(plainText, 40, plainText.length));
-		System.out.println(rest.length + ":" + Misc.bytesToHex(rest));
-		
-		_final = crypto.doFinal();
+		byte[] _final = crypto.doFinal(plainText);
 		System.out.println(Misc.bytesToHex(_final));
 		System.out.println("DECRYPT###############");
 		crypto = new Crypto(Crypto.OpMode.DECRYPT);
@@ -69,15 +71,15 @@ public class Test {
 		crypto.init(Algorithms.getSHECipher(), Modes.getOFB(),IV, key);
 		
 	
-		_0_40 = crypto.update(_0_40);
-		System.out.println(_0_40.length + ":" + Misc.bytesToHex(_0_40));
-		
-		rest = crypto.update(rest);
-		System.out.println(rest.length + ":" + Misc.bytesToHex(rest));
+//		_0_40 = crypto.update(_0_40);
+//		System.out.println(_0_40.length + ":" + Misc.bytesToHex(_0_40));
+//		
+//		rest = crypto.update(rest);
+//		System.out.println(rest.length + ":" + Misc.bytesToHex(rest));
 		
 		_final = crypto.doFinal(_final);
 		System.out.println( Misc.bytesToHex(_final));
-
+		System.out.println(new String(_final));
 		//######################################################################
 
 	}
