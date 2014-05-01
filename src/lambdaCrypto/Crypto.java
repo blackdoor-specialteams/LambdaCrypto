@@ -52,7 +52,9 @@ public  class Crypto {
 	//not a thing
 //	public Crypto(){
 //	}
-	
+	public OpMode getRunMode(){
+		return opMode;
+	}
 	public Crypto getEncryptionCrypto(){
 		return new Crypto(OpMode.ENCRYPT);
 	}

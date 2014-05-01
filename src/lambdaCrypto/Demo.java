@@ -113,7 +113,7 @@ public class Demo {
 
 	private byte[] runEncrypt(String filename) {
 		byte[] _plaintext = fileToByteArray(new File(filename));
-		//writeByteArrayToFile("src/testpack/testtest.txt", _plaintext);
+		// writeByteArrayToFile("src/testpack/testtest.txt", _plaintext);
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 
 		crypto.init(chooseCipher(), chooseBlockMode(crypto), IV, key);
@@ -145,19 +145,34 @@ public class Demo {
 		}
 		return choice;
 	}
+
 	private BlockCipherMode chooseBlockMode(Crypto crypto) {
 		BlockCipherMode choice = null;
-	//	if(crypto.)
-		switch (blockmode) {
-		case "OFB":
-			choice =  Modes.getOFB();
-			break;
+		if (crypto.getRunMode() == OpMode.ENCRYPT)
+			switch (blockmode) {
+			case "OFB":
+				choice = Modes.getOFB();
+				break;
+			case "CBC":
+				choice = Modes.getCBCEncrypt();
+				break;
+			}
+		else {
+			switch (blockmode) {
+			case "OFB":
+				choice = Modes.getOFB();
+				break;
+			case "CBC":
+				choice = Modes.getCBCDecrypt();
+				break;
+			}
 		}
 		return choice;
 	}
 
 	private byte[] runCipher(Crypto crypto, byte[] inputtext) {
-		byte[] final_text = crypto.doFinal(Arrays.copyOf(inputtext, inputtext.length));
+		byte[] final_text = crypto.doFinal(Arrays.copyOf(inputtext,
+				inputtext.length));
 		return final_text;
 	}
 

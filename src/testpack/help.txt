@@ -17,8 +17,8 @@ Available Control Parameters:
 	[-x] - Default Run Conditions (Cipher and Blockmode)
 		Uses: used in conjunction with the following 
 		control parameters. 
-		Default cipher:
-		Default blockmode:
+		Default cipher: SHE
+		Default blockmode: OFB
 		
 	[-e] - Encryption Command
 		Description:
@@ -55,4 +55,6 @@ Available Ciphers
 	
 Available Blockmodes
 ------------------------------------------------------
-
+OFB
+CBCEncrypt
+CBCDecrypt
