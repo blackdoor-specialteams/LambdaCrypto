@@ -90,6 +90,7 @@ public  class Crypto {
 		System.out.println(bufferIndex);
 		byte[] main = update(input);
 		byte[] out;
+		System.out.println(Misc.bytesToHex(main));
 		//if buffer isn't empty add a padding indicator to the end of data
 		if(bufferIndex != 0){
 			
@@ -170,10 +171,10 @@ public  class Crypto {
 	public byte[] update(byte[] input){
 		if(!initialized)
 			throw new RuntimeException("Cipher not initialized");
-		byte[] iv;
-		if(this.iv == null)
-			iv = nextIV;
-		else iv = this.iv;
+		//byte[] iv;
+		//if(this.iv == null)
+		//	iv = nextIV;
+		//else iv = this.iv;
 		
 		if(input.length == 0)
 			return new byte[]{};//null;
@@ -186,12 +187,13 @@ public  class Crypto {
 		}
 		
 		int numBlocks = (int) Math.floor(input.length/blockSize);
-		//System.out.println(numBlocks);
+		System.out.println(numBlocks);
 		byte[] out = new byte[blockSize * numBlocks];
 		for(int i = 0; i < numBlocks; i++){
 			//System.out.println("i:"+i+" block:" + blockNo);
 			System.arraycopy(input, blockSize*i, buffer, 0, blockSize);
 			TwoTuple<byte[], byte[]> result = mode.cryptBlock(algo, key, buffer, iv);
+			System.out.println("T1: " + Misc.bytesToHex(result.getT1()));
 			System.arraycopy(result.getT1(), 0, out, i * blockSize, blockSize);
 			iv = result.getT2();
 		}
