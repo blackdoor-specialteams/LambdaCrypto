@@ -115,7 +115,7 @@ public class Demo {
 		// writeByteArrayToFile("src/testpack/testtest.txt", _plaintext);
 		Crypto crypto = new Crypto(OpMode.ENCRYPT);
 
-		crypto.init(chooseCipher(), chooseBlockMode(crypto), IV, key);
+		IV = crypto.init(chooseCipher(), chooseBlockMode(crypto), key);
 		return runCipher(crypto, _plaintext);
 	}
 
