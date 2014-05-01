@@ -45,8 +45,8 @@ public  class Crypto {
 		byte[] ciphertext = crypto.update(plaintext);
 		byte[] pad = crypto.doFinal();
 		
-		System.out.println(Misc.bytesToHex(plaintext));
-		System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
+		//System.out.println(Misc.bytesToHex(plaintext));
+		//System.out.println(Misc.bytesToHex(ciphertext) + Misc.bytesToHex(pad));
 	}
 	
 	//not a thing
@@ -86,11 +86,11 @@ public  class Crypto {
 	 * @return the new buffer with the result
 	 */
 	public byte[] doFinal(byte[] input){
-		System.out.println(Misc.bytesToHex(buffer));
-		System.out.println(bufferIndex);
+		//System.out.println(Misc.bytesToHex(buffer));
+		//System.out.println(bufferIndex);
 		byte[] main = update(input);
 		byte[] out;
-		System.out.println(Misc.bytesToHex(main));
+		//System.out.println(Misc.bytesToHex(main));
 		//if buffer isn't empty add a padding indicator to the end of data
 		if(bufferIndex != 0){
 			
@@ -187,13 +187,13 @@ public  class Crypto {
 		}
 		
 		int numBlocks = (int) Math.floor(input.length/blockSize);
-		System.out.println(numBlocks);
+		//System.out.println(numBlocks);
 		byte[] out = new byte[blockSize * numBlocks];
 		for(int i = 0; i < numBlocks; i++){
 			//System.out.println("i:"+i+" block:" + blockNo);
 			System.arraycopy(input, blockSize*i, buffer, 0, blockSize);
 			TwoTuple<byte[], byte[]> result = mode.cryptBlock(algo, key, buffer, iv);
-			System.out.println("T1: " + Misc.bytesToHex(result.getT1()));
+			//System.out.println("T1: " + Misc.bytesToHex(result.getT1()));
 			System.arraycopy(result.getT1(), 0, out, i * blockSize, blockSize);
 			iv = result.getT2();
 		}
