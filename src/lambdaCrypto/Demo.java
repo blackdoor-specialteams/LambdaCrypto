@@ -76,6 +76,7 @@ public class Demo {
 	private byte[] key = new byte[BLOCKSIZE];
 	private byte[] plaintext = new byte[100];
 	private byte[] ciphertext = new byte[100];
+	private int msglength;
 
 	public Demo() {
 		runmode = RunMode.DEFAULT;
@@ -89,7 +90,7 @@ public class Demo {
 	private void Run(String[] args) {
 		try {
 			if (args != null) {
-				// setFiles(args);
+				setFiles(args);
 				if (runmode == RunMode.ENCRYPT) {
 					ciphertext = runEncrypt(infile);
 					writeByteArrayToFile(firstoutfile, ciphertext);
@@ -101,7 +102,7 @@ public class Demo {
 				ciphertext = runEncrypt(infile);
 
 				writeByteArrayToFile(firstoutfile, ciphertext);
-				plaintext = runDecrypt(firstoutfile);
+				plaintext = runDecrypt(ciphertext);
 				writeByteArrayToFile(finaloutfile, plaintext);
 			}
 		} catch (Exception e) {
@@ -120,10 +121,15 @@ public class Demo {
 
 	private byte[] runDecrypt(String filename) {
 		byte[] _ciphertext = fileToByteArray(new File(filename));
-		// System.out.println("Ciphertext: " + Misc.bytesToHex(ciphertext));
 		Crypto crypto = new Crypto(Crypto.OpMode.DECRYPT);
 		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
 		return runCipher(crypto, _ciphertext);
+	}
+
+	private byte[] runDecrypt(byte[] barray) {
+		Crypto crypto = new Crypto(Crypto.OpMode.DECRYPT);
+		crypto.init(chooseCipher(), Modes.getOFB(), IV, key);
+		return runCipher(crypto, barray);
 	}
 
 	private CipherAlgorithm chooseCipher() {
@@ -140,13 +146,8 @@ public class Demo {
 	}
 
 	private byte[] runCipher(Crypto crypto, byte[] inputtext) {
-		byte[] text = crypto.update(Arrays.copyOf(inputtext, inputtext.length));
-		byte[] final_text = crypto.doFinal();
-		byte[] finalarray = new byte[final_text.length + text.length];
-		System.arraycopy(text, 0, finalarray, 0, text.length);
-		System.arraycopy(final_text, 0, finalarray, text.length,
-				final_text.length);
-		return finalarray;
+		byte[] final_text = crypto.doFinal(Arrays.copyOf(inputtext, inputtext.length));
+		return final_text;
 	}
 
 	private void setFiles(String[] args) {
@@ -156,8 +157,8 @@ public class Demo {
 				cipher = args[1];
 				blockmode = args[2];
 				infile = args[3];
-				firstoutfile = args[4];
-				finaloutfile = args[4] + "_final";
+				firstoutfile = args[4] + ".txt";
+				finaloutfile = args[4] + "_final.txt";
 			} else if (args.length == 4) {
 				cipher = args[1];
 				blockmode = args[2];
